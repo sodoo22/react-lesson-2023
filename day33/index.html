@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Day 1</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <h1>Day 33 ReactJS introduction </h1>
+
+
+    <div id="root"></div>
+    <div id="sel"></div>
+    <div id="text">test</div>
+    <div id="img"></div>
+
+
+
+    <script type="text/babel">
+        // React code will go here
+        function Hello() {
+            return <h1> Hello React</h1>
+        }
+        ReactDOM.render(<Hello />, document.getElementById("root"))
+
+        function CreateText() {
+            return <p>TEST TEST</p>
+
+        }
+        ReactDOM.render(<CreateText />, document.getElementById("text"))
+
+        function CreatImage() {
+            return <img src="https://images.unsplash.com/photo-1672296055536-1ab457c6a58c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80" alt="" />
+        }
+        ReactDOM.render(<CreatImage />, document.getElementById("img"))
+
+        function SelectFunc() {
+            return (<select name="" id="">
+                <option value="">1</option>
+                <option value="">2</option>
+                <option value="">3</option>
+            </select>)
+        }
+        ReactDOM.render(<SelectFunc />, document.getElementById("sel"))
+
+    </script>
+
+
+
+
+
+    <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</body>
+
+</html>
