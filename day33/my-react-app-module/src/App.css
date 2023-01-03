@@ -6,7 +6,7 @@
 
 .App-logo {
   /* height: 30vmin; */
-  height: 120px;
+  height: 140px;
   pointer-events: none;
 }
 
@@ -41,6 +41,9 @@
     transform: rotate(360deg);
   }
 } */
+.App h2 {
+  margin-top: 30px;
+}
 
 
 .contaner {
@@ -67,6 +70,7 @@
   color: rgb(132, 132, 132);
   justify-content: left;
   /* align-items: center; */
+  margin-top: 0;
 }
 
 .textbox {
@@ -81,4 +85,8 @@
 
 .textbox p {
   margin-top: 5px;
+}
+
+.bi {
+  color: #61abfb;
 }

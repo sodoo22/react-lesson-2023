@@ -1,42 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'font-awesome/css/font-awesome.min.css'
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import Product1 from './Product1';
+import Product2 from './Product2';
+import Product3 from './Product3';
+import Product4 from './Product4';
+import ProductFunc from './ProductFunc';
+import ProductFunc2 from './ProductFunc2';
+import ProductFunc3 from './ProductFunc3';
+import ProductFunc4 from './ProductFunc4';
 
 function App() {
   return (
     <div className="App">
       <h2>Popular Products</h2><hr></hr>
-
-
-      <div className="contaner">
-        <div>
-          <img src=" ./img/image-yellow.png" className="App-logo" alt="logo" />
-        </div>
-        <div className="textbox">
-          <h2>55</h2>
-          <p className="bluetext">Haught or Naught</p>
-          <p>High-minded or absent-minded? You decide</p>
-          <div className="contaner profile">
-            <p>Submitted by:  </p>
-            <img src=" https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80" className="App-logo" alt="logo" />
-          </div>
-        </div>
-      </div>
-
-      <div className="contaner">
-        <div>
-          <img src=" ./img/image-aqua.png" className="App-logo" alt="logo" />
-        </div>
-        <div className="textbox">
-          <h2>44</h2>
-          <p className="bluetext">Yellow Pail</p>
-          <p>On-demand sand castle contruction expertice</p>
-          <div className="contaner profile">
-            <p>Submitted by:  </p>
-            <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80" className="App-logo" alt="logo" />
-          </div>
-        </div>
-      </div>
-
+      < Product1 />
+      < Product2 />
+      < Product3 />
+      < Product4 />
+      <ProductFunc />
+      <ProductFunc2 />
+      <ProductFunc3 />
+      <ProductFunc4 />
 
     </div>
   );
