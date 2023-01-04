@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 
 function Profile({ img, name, age, gender, profession }) {
@@ -50,7 +50,7 @@ function App() {
 
 
   return (
-    <div className="App">
+    <div className="App container">
       <h2>Our Team</h2>
       <div className="App2">
         <Profile
