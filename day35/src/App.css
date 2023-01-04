@@ -1,0 +1,47 @@
+.App {
+
+  text-align: center;
+}
+
+.App2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+p {
+  font-weight: 300;
+  font-size: 13px;
+  margin: 8px 0;
+  color: rgb(70, 70, 70);
+}
+
+
+img {
+  margin-top: 20px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid rgb(103, 120, 221);
+}
+
+.profile {
+  border: 1px solid rgb(103, 120, 221);
+  border-radius: 5px;
+  width: 220px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.utga {
+  color: rgb(103, 120, 221);
+  font-weight: 500;
+}
+
+h2 {
+  width: 90%;
+  margin: 20px auto;
+  background-color: rgb(103, 120, 221);
+  padding: 20px;
+  border-radius: 5px;
+  color: white;
+}
