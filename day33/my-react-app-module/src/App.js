@@ -16,6 +16,7 @@ function App() {
         title={product.title}
         description={product.description}
         submitterAvatarUrl={product.submitterAvatarUrl}
+        stars={product.stars}
       />
     );
   });
