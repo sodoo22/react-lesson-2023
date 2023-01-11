@@ -10,16 +10,6 @@ function App() {
   const [productsList, setProductList] = useState(products);
 
   function handleProductUpVote(productId) {
-    // console.log("upvoted", productId);
-    // const foundProduct = productsList.filter((product) => {
-    //   if (product.id == productId) {
-    //     return product;
-    //   }
-    // });
-    // console.log(foundProduct[0].votes);
-    // // foundProduct[0].votes = foundProduct[0].votes + 1;
-
-    // // change votes in product array
     console.log(products);
     const newProducts = productsList.map((product) => {
       if (product.id == productId) {

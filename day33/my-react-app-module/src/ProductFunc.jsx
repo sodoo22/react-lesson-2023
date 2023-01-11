@@ -2,10 +2,6 @@ import { useState } from "react";
 import products from "./Seed";
 import { Rating } from "react-simple-star-rating";
 
-// function ProductsFunc(props) {
-
-// }
-
 function ProductFunc({
   id,
   productImageUrl,
