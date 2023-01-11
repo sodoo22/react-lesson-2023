@@ -15,6 +15,7 @@ function ProductFunc({
   description,
   submitterAvatarUrl,
   onVote,
+  downVote,
 }) {
   // const [vote, setVote] = useState(votes);
   const [star, setStars] = useState(stars);
@@ -46,7 +47,7 @@ function ProductFunc({
         <a
           onClick={() => {
             onVote(id);
-            // handleUpVote(id);
+            handleUpVote(id);
           }}
         >
           <i className="bi bi-caret-up-fill"></i>
@@ -54,6 +55,7 @@ function ProductFunc({
         <h2>{votes}</h2>
         <a
           onClick={() => {
+            downVote(id);
             handleDownVote(id);
           }}
         >
