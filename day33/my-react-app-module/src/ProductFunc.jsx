@@ -2,6 +2,10 @@ import { useState } from "react";
 import products from "./Seed";
 import { Rating } from "react-simple-star-rating";
 
+// function ProductsFunc(props) {
+
+// }
+
 function ProductFunc({
   id,
   productImageUrl,
@@ -10,12 +14,13 @@ function ProductFunc({
   title,
   description,
   submitterAvatarUrl,
+  onVote,
 }) {
-  const [vote, setVote] = useState(votes);
+  // const [vote, setVote] = useState(votes);
   const [star, setStars] = useState(stars);
 
   function handleUpVote(productId) {
-    setVote(vote + 1);
+    // setVote(vote + 1);
     if (star >= 5) {
       setStars(5);
     } else {
@@ -24,7 +29,7 @@ function ProductFunc({
   }
 
   function handleDownVote(productId) {
-    setVote(vote - 1);
+    // setVote(vote - 1);
     if (star <= 0) {
       setStars(0);
     } else {
@@ -40,12 +45,13 @@ function ProductFunc({
       <div className="textbox">
         <a
           onClick={() => {
-            handleUpVote(id);
+            onVote(id);
+            // handleUpVote(id);
           }}
         >
           <i className="bi bi-caret-up-fill"></i>
         </a>
-        <h2>{vote}</h2>
+        <h2>{votes}</h2>
         <a
           onClick={() => {
             handleDownVote(id);

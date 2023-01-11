@@ -4,9 +4,37 @@ import "font-awesome/css/font-awesome.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import ProductFunc from "./ProductFunc";
 import products from "./Seed";
+import { useState } from "react";
 
 function App() {
-  const productsList = products.map((product) => {
+  const [productsList, setProductList] = useState(products);
+
+  function handleProductUpVote(productId) {
+    console.log("upvoted", productId);
+    const foundProduct = productsList.filter((product) => {
+      if (product.id == productId) {
+        return product;
+      }
+    });
+    console.log(foundProduct[0].votes);
+    // foundProduct[0].votes = foundProduct[0].votes + 1;
+
+    // change votes in product array
+    console.log(products);
+    const newProducts = productsList.map((product) => {
+      if (product.id == productId) {
+        return Object.assign({}, product, {
+          votes: product.votes + 1,
+        });
+      } else {
+        return product;
+      }
+    });
+    console.log(newProducts);
+    setProductList(newProducts);
+  }
+
+  const productComponents = productsList.map((product) => {
     // console.log(product);
     return (
       <ProductFunc
@@ -17,6 +45,7 @@ function App() {
         description={product.description}
         submitterAvatarUrl={product.submitterAvatarUrl}
         stars={product.stars}
+        onVote={handleProductUpVote}
       />
     );
   });
@@ -25,7 +54,7 @@ function App() {
     <div className="App">
       <h2>Popular Products</h2>
       <hr></hr>
-      {productsList}
+      {productComponents}
     </div>
   );
 }
