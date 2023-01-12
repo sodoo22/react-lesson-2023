@@ -2,6 +2,9 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import Counter from "./components/Counter";
+import UpdateArrays from "./components/UpdateArrays";
+import SpreadArray from "./components/SpreadArray";
+import UpdatingObjects from "./components/UpdatingObjects";
 
 function App() {
   const [counter, setCounter] = useState(0);
@@ -35,6 +38,15 @@ function App() {
       </div>
       <div>
         <Counter />
+      </div>
+      <div>
+        <UpdateArrays />
+      </div>
+      <div>
+        <SpreadArray />
+      </div>
+      <div>
+        <UpdatingObjects />
       </div>
     </div>
   );
