@@ -1,10 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
+import Counter from "./components/Counter";
 
 function App() {
   const [counter, setCounter] = useState(0);
-  const [inputText, setInputText] = useState(0);
+  const [inputText, setInputText] = useState("");
 
   function handleClick() {
     console.log("clicked");
@@ -24,7 +25,16 @@ function App() {
       </div>
       <div id="ex2">
         <p>{inputText}</p>
-        <input onChange={handleInput}></input>
+        {/* <input onChange={handleInput}></input> */}
+        <input
+          value={inputText}
+          onChange={(e) => {
+            handleInput(e);
+          }}
+        />
+      </div>
+      <div>
+        <Counter />
       </div>
     </div>
   );
