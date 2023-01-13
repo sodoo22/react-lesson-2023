@@ -22,8 +22,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* <h1>Day-41</h1>
-      <div id="ex1">
+      <h1>Day-41</h1>
+      {/* <div id="ex1">
         <p>{counter}</p>
         <button onClick={handleClick}>Add Counter</button>
       </div>
@@ -42,16 +42,16 @@ function App() {
       </div>
       <div>
         <UpdateArrays />
-      </div>
+      </div> */}
       <div>
         <SpreadArray />
       </div>
-      <div>
+      {/* <div>
         <UpdatingObjects />
-      </div> */}
+      </div>
       <div>
         <Exercises />
-      </div>
+      </div> */}
     </div>
   );
 }
