@@ -22,6 +22,8 @@ export default function Index() {
         </Link>
         <Link to={"/accordion"}>Accordion Page</Link>
         <Link to={"/movies"}>Movies Page</Link>
+        <Link to={"/gallery"}>Gallery Page</Link>
+        <Link to={"/toaster"}>Toaster Page</Link>
       </nav>
     </div>
   );
