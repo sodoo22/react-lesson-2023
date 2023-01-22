@@ -41,7 +41,7 @@ export default function Product(props) {
                 const likedProduct = {
                   id: product.id,
                   title: product.title,
-                  liked: true,
+                  // liked: true,
                 };
                 props.setWishList([...props.wishlist, likedProduct]);
               } else {

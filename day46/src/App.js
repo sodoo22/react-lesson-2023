@@ -8,7 +8,7 @@ import { useState } from "react";
 
 function App() {
   const [wishlist, setWishList] = useState([]);
-  const [liked, setLiked] = useState(false);
+  // const [liked, setLiked] = useState(false);
 
   return (
     <div>
@@ -25,7 +25,10 @@ function App() {
           />
           <Route
             path="/product/:id"
-            element={<Product liked={liked} setLiked={setLiked} />}
+            element={<Product
+            //  liked={liked} 
+            //  setLiked={setLiked}
+            />}
           />
         </Routes>
         <Outlet />
