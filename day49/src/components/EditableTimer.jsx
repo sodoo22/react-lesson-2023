@@ -8,6 +8,8 @@ export default function EditableTimer({
   project,
   elapsed,
   runningSince,
+  onTrashClick,
+  onStartClick,
 }) {
   const [editOpenForm, setEditOpenForm] = useState(false);
   return (
@@ -21,6 +23,8 @@ export default function EditableTimer({
           project={project}
           elapsed={elapsed}
           runningSince={runningSince}
+          onTrashClick={onTrashClick}
+          onStartClick={onStartClick}
         />
       )}
     </div>
