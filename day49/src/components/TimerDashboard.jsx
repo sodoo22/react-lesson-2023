@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import timerData from "../data/data";
 import EditableTimerList from "./EditableTimerList";
-
+import { newTimer } from "./Helpers";
+import TimerForm from "./TimerForm";
+import ToggleableTimerForm from "./ToggleableTimerForm";
 export default function TimerDashboard() {
   const [timers, setTimers] = useState({ timers: [] });
 
@@ -9,13 +11,41 @@ export default function TimerDashboard() {
     setInterval(() => setTimers({ timers: timerData }), 1000);
   }, []);
 
+  function handleEditFormSubmit(timer) {
+    updateTime(timer);
+  }
+
+  function updateTime(attributes) {
+    setTimers({
+      timers: timers.timers.map((timer) => {
+        if (timer.id === attributes.id) {
+          timer.title = attributes.title;
+          timer.projects = attributes.projects;
+        }
+        return timer;
+      }),
+    });
+  }
+
+  function handleCreateFormSubmit(timer) {
+    createTimer(timer);
+  }
+
+  function createTimer(timer) {
+    const t = newTimer(timer);
+    setTimers({
+      timers: timers.timers.concat(t),
+    });
+  }
+
   function handleStopClick(timerId) {
     stopTimer(timerId);
   }
+
   function stopTimer(timerId) {
     const now = Date.now();
     setTimers({
-      timer: timers.timers.map((timer) => {
+      timers: timers.timers.map((timer) => {
         if (timer.id === timerId) {
           const lastElapsed = now - timer.runningSince;
           timer.elapsed = timer.elapsed + lastElapsed;
@@ -48,6 +78,7 @@ export default function TimerDashboard() {
   function handleTrashClick(timerId) {
     deleteTimer(timerId);
   }
+
   function deleteTimer(timerId) {
     setTimers({
       timers: timers.timers.filter((t) => t.id !== timerId),
@@ -57,6 +88,7 @@ export default function TimerDashboard() {
   return (
     <div>
       <h1>Timers</h1>
+
       {timers.timers && (
         <div>
           <EditableTimerList
@@ -64,7 +96,9 @@ export default function TimerDashboard() {
             onTrashClick={handleTrashClick}
             onStartClick={handleStartClick}
             onStopClick={handleStopClick}
+            onFormSubmit={handleEditFormSubmit}
           />
+          <ToggleableTimerForm onFormSubmit={handleCreateFormSubmit} />
         </div>
       )}
     </div>

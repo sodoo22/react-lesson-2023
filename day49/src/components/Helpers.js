@@ -24,4 +24,15 @@ function pad(numberString, size) {
   }
   return padded;
 }
-export { renderElapsedString };
+
+function newTimer(attrs = {}) {
+  console.log(attrs);
+  return {
+    title: attrs.title || "Timer",
+    project: attrs.project || "Project",
+    id: uuidv4(), // eslint-disable-line no-undef
+    elapsed: 0,
+  };
+}
+
+export { renderElapsedString, newTimer };

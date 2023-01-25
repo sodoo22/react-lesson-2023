@@ -15,12 +15,18 @@ export default function Timer({
   onTrashClick,
   onStartClick,
   onStopClick,
+  onEditClick,
 }) {
   const timer = renderElapsedString(elapsed, runningSince);
+
+  function handleEditClick() {
+    onEditClick(id);
+  }
 
   function handleStopClick() {
     onStopClick(id);
   }
+
   function handleStartClick() {
     onStartClick(id);
   }
@@ -67,7 +73,7 @@ export default function Timer({
           }}
         >
           <DeleteIcon onClick={handleDelete} />
-          <ModeEditIcon />
+          <ModeEditIcon onClick={handleEditClick} />
         </Box>
         <TimerActionButton
           isTimerRunning={runningSince}
