@@ -1,29 +1,22 @@
-import { Box, Card } from "@mui/material";
 import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
+import Card from "@mui/material/Card";
+import { Box, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import TimerActionButton from "./TimerActionButton";
-import { useState } from "react";
 import { renderElapsedString } from "./Helpers";
 
-export default function Timer({
-  title,
-  project,
-  elapsed,
-  runningSince,
-  runningTime,
-}) {
-  const [timerRunning, setTimerRunning] = useState(false);
-  const [runningInterval, setRunningInterval] = useState(0);
+export default function Timer({ id, title, project, elapsed, runningSince }) {
   const timer = renderElapsedString(elapsed, runningSince);
-  console.log(timer);
-
-  //   setRunningInterval(() => {});
 
   return (
     <Container maxWidth="sm">
-      <Card sx={{ maxWidth: 345, marginBottom: 5 }}>
+      <Card
+        sx={{
+          maxWidth: 345,
+          marginBottom: 5,
+        }}
+      >
         <Typography sx={{ fontSize: 28 }} color="text.secondary">
           {title}
         </Typography>
@@ -36,9 +29,7 @@ export default function Timer({
             justifyContent: "center",
             alignItems: "center",
           }}
-        >
-          <h1>{runningTime}</h1>
-        </Box>
+        ></Box>
         <Box
           sx={{
             display: "flex",
@@ -53,22 +44,19 @@ export default function Timer({
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            marginBottom: 5,
+            marginBottom: 2,
           }}
         >
           <DeleteIcon />
-          <EditIcon />
+          <ModeEditIcon />
         </Box>
         <TimerActionButton
-          isTimerRunning={timerRunning}
+          isTimerRunning={runningSince}
           onStartClick={() => {
-            setTimerRunning(true);
-
-            console.log("on start click");
+            console.log("start");
           }}
           onStopClick={() => {
-            setTimerRunning(false);
-            console.log("on stop click");
+            console.log("stop");
           }}
         />
       </Card>
