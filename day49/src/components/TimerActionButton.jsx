@@ -1,5 +1,4 @@
 import { Button } from "@mui/material";
-
 export default function TimerActionButton({
   isTimerRunning,
   onStartClick,
