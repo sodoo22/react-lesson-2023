@@ -1,10 +1,10 @@
-import { Card, CardContent, Grid, Button, TextField } from "@mui/material";
+import { Button, Card, CardContent, Grid, TextField } from "@mui/material";
 import { useState } from "react";
 
 export default function TimerForm({
-  id,
   title,
   project,
+  id,
   onFormSubmit,
   onFormClose,
 }) {
@@ -16,14 +16,13 @@ export default function TimerForm({
   const submitText = id ? "Update" : "Create";
 
   function handleTitleChange(e) {
-    console.log(e.target.value);
     setTimer({
       ...timer,
       title: e.target.value,
     });
   }
 
-  function handleProjectTitle(e) {
+  function handleProjectChange(e) {
     setTimer({
       ...timer,
       project: e.target.value,
@@ -32,7 +31,7 @@ export default function TimerForm({
 
   return (
     <div>
-      <h1>Timer Form</h1>
+      <h1 className="margin-auto">Timer form</h1>
       <Grid>
         <Card sx={{ maxWidth: 345, margin: "0 auto" }}>
           <CardContent>
@@ -44,8 +43,8 @@ export default function TimerForm({
                     placeholder={timer.title}
                     label={"Title"}
                     value={timer.title}
-                    variant={"outlined"}
                     fullWidth={true}
+                    variant={"outlined"}
                     onChange={handleTitleChange}
                   />
                 </Grid>
@@ -55,9 +54,9 @@ export default function TimerForm({
                     placeholder={timer.project}
                     label={"Project"}
                     value={timer.project}
-                    variant={"outlined"}
                     fullWidth={true}
-                    onChange={handleProjectTitle}
+                    variant={"outlined"}
+                    onChange={handleProjectChange}
                   />
                 </Grid>
                 <Grid item xs={12}>
@@ -68,6 +67,7 @@ export default function TimerForm({
                   >
                     {submitText}
                   </Button>
+
                   <Button
                     color={"success"}
                     variant={"outlined"}

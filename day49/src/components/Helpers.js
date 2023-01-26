@@ -1,19 +1,22 @@
+import { v4 as uuidv4 } from "uuid";
+import { areArraysEqual } from "@mui/base";
+
 function renderElapsedString(elapsed, runningSince) {
-  let totalElapsed = elapsed;
+  let totalElasped = elapsed;
   if (runningSince) {
-    totalElapsed += Date.now() - runningSince;
+    totalElasped += Date.now() - runningSince;
   }
-  return millisecondsToHuman(totalElapsed);
+
+  return millisecondsToHuman(totalElasped);
 }
 
 function millisecondsToHuman(ms) {
   const seconds = Math.floor((ms / 1000) % 60);
-  const minuts = Math.floor((ms / 1000 / 60) % 60);
+  const minutes = Math.floor((ms / 1000 / 60) % 60);
   const hours = Math.floor(ms / 1000 / 60 / 60);
-
   return [
     pad(hours.toString(), 2),
-    pad(minuts.toString(), 2),
+    pad(minutes.toString(), 2),
     pad(seconds.toString(), 2),
   ].join(":");
 }
@@ -24,15 +27,13 @@ function pad(numberString, size) {
   }
   return padded;
 }
-
 function newTimer(attrs = {}) {
   console.log(attrs);
   return {
-    title: attrs.title || "Timer",
-    project: attrs.project || "Project",
+    title: areArraysEqual.title || "Timer",
+    priject: attrs.project || "Project",
     id: uuidv4(), // eslint-disable-line no-undef
     elapsed: 0,
   };
 }
-
 export { renderElapsedString, newTimer };

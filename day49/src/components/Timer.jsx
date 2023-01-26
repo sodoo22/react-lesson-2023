@@ -1,17 +1,17 @@
+import { Card, Typography } from "@mui/material";
 import Container from "@mui/material/Container";
-import Card from "@mui/material/Card";
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 import DeleteIcon from "@mui/icons-material/Delete";
-import ModeEditIcon from "@mui/icons-material/ModeEdit";
+import EditIcon from "@mui/icons-material/Edit";
 import TimerActionButton from "./TimerActionButton";
 import { renderElapsedString } from "./Helpers";
 
 export default function Timer({
-  id,
   title,
   project,
   elapsed,
   runningSince,
+  id,
   onTrashClick,
   onStartClick,
   onStopClick,
@@ -19,27 +19,27 @@ export default function Timer({
 }) {
   const timer = renderElapsedString(elapsed, runningSince);
 
-  function handleEditClick() {
-    onEditClick(id);
-  }
-
-  function handleStopClick() {
-    onStopClick(id);
+  function handleDelete() {
+    onTrashClick(id);
   }
 
   function handleStartClick() {
     onStartClick(id);
   }
-
-  function handleDelete() {
-    onTrashClick(id);
+  function handleStopClick() {
+    onStopClick(id);
   }
+  function handleEditClick() {
+    onEditClick(id);
+  }
+
   return (
-    <Container maxWidth="sm">
+    <Container maxWidth="sm" style={{ marginBottom: "50px" }}>
       <Card
         sx={{
           maxWidth: 345,
-          marginBottom: 5,
+          marginBottom: 15,
+          margin: "auto",
         }}
       >
         <Typography sx={{ fontSize: 28 }} color="text.secondary">
@@ -54,13 +54,6 @@ export default function Timer({
             justifyContent: "center",
             alignItems: "center",
           }}
-        ></Box>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
         >
           <h1>{timer}</h1>
         </Box>
@@ -69,11 +62,11 @@ export default function Timer({
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            marginBottom: 2,
+            marginBottom: "20",
           }}
         >
           <DeleteIcon onClick={handleDelete} />
-          <ModeEditIcon onClick={handleEditClick} />
+          <EditIcon onClick={handleEditClick} />
         </Box>
         <TimerActionButton
           isTimerRunning={runningSince}

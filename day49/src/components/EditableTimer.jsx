@@ -1,11 +1,11 @@
-import { useState } from "react";
 import Timer from "./Timer";
 import TimerForm from "./TimerForm";
+import { useState } from "react";
 
 export default function EditableTimer({
-  id,
   title,
   project,
+  id,
   elapsed,
   runningSince,
   onTrashClick,
