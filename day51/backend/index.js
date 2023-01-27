@@ -36,7 +36,27 @@ app.post("/data", (request, response) => {
     name: request.body.name,
     major: request.body.major,
   };
-  data.push(newData);
+  data = [...data, newData];
+  response.json(data);
+});
+
+app.put("/data", (request, response) => {
+  console.log(request.body);
+  console.log(request.body.id);
+
+  // ----------- Method 1 ---------------
+  // const newData = data.filter((a) => a.id !== request.body.id);
+  // data = [...newData, request.body];
+
+  // ----------- Method OK ---------------
+  data = data.map((d) => {
+    if (d.id === request.body.id) {
+      d.name = request.body.name;
+      d.major = request.body.major;
+    }
+    return d;
+  });
+
   response.json(data);
 });
 
