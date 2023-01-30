@@ -10,7 +10,7 @@ const PORT = 8080;
 app.use(cors());
 app.use(bodyParcer.json());
 
-let data = [{ id: 1, name: "Sodoo", major: "CS" }];
+let data = [{ id: 1, name: "Sodoo", major: "Computer Science" }];
 
 app.get("/", (request, response) => {
   response.send("Here I'm a Server");
