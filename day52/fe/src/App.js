@@ -5,7 +5,11 @@ function App() {
   const URL = "http://localhost:8080/users";
 
   const [users, setUsers] = useState();
-  const [currentData, setCurrentData] = useState({});
+  const [currentUser, serCurrentUser] = useState({
+    id: "",
+    username: "",
+    age: "",
+  });
 
   useEffect(() => {
     fetchAllData();
@@ -58,18 +62,7 @@ function App() {
     setUsers(FETCHED_JSON.data);
   }
 
-  async function handleUpdate(e) {
-    // e.preventDefault();
-    // console.log(e.target.name.value);
-    // console.log(e.target.major.value);
-    // const sendData = {
-    //   id: currentData.id,
-    //   name: e.target.name.value,
-    //   major: e.target.major.value,
-    // };
-    // sendPutRequest(sendData);
-    // setIsOpenForm(false);
-  }
+  function name(params) {}
 
   return (
     <div className="App">
@@ -78,12 +71,22 @@ function App() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="">
           User Name:
-          <input type="test" name="username" />
+          <input
+            type="test"
+            name="username"
+            value={currentUser.username}
+            onChange={handleNameChange}
+          />
         </label>
         <br />
         <label htmlFor="">
           Age:
-          <input type="test" name="age" />
+          <input
+            type="test"
+            name="age"
+            value={currentUser.age}
+            onChange={handleAgeChange}
+          />
         </label>
         <br />
         <button>Submit</button>
@@ -94,15 +97,14 @@ function App() {
           return (
             <p key={index}>
               {user.username} : {user.age}
-              {/* <button onClick={() => handleEdit(user.id)}>Edit</button>/ */}
-              {"   "}
+              <button onClick={() => handleEdit(user.id)}>Edit</button>{" "}
               <button onClick={() => handleDelete(user.id)}>Delete</button>
             </p>
           );
         })}
       <div>
         <h3>Update form</h3>
-        <form onSubmit={handleUpdate}>
+        <form>
           <label htmlFor="">
             User Name:
             <input
