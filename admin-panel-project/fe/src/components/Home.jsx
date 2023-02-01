@@ -31,6 +31,7 @@ import {
   MemoryRouter,
   useLocation,
 } from "react-router-dom";
+import UserAdd from "../pages/UserAdd";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -84,8 +85,13 @@ export default function Home(props) {
           icon={<ShoppingBagOutlinedIcon />}
         />
         <ListItemLink
-          to="/users"
+          to="/user"
           primary="Users"
+          icon={<PermIdentityOutlinedIcon />}
+        />
+        <ListItemLink
+          to="/user/add"
+          primary="User Add"
           icon={<PermIdentityOutlinedIcon />}
         />
       </List>
@@ -212,7 +218,8 @@ export default function Home(props) {
         </Routes>
         <Routes>
           <Route path="/" element={<Products />} />
-          <Route path="/users" element={<Users />} />
+          <Route path="/user" element={<Users />} />
+          <Route path="/user/add" element={<UserAdd />} />
         </Routes>
       </Box>
     </Box>
