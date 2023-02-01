@@ -110,6 +110,23 @@ app.post("/users", (request, response) => {
   });
 });
 
+app.get("/products", (request, response) => {
+  fs.readFile("./data/productsData.json", "utf-8", (readError, readData) => {
+    if (readError) {
+      response.json({
+        status: "file reader error",
+        data: [],
+      });
+    }
+    const ObjectData = JSON.parse(readData);
+
+    response.json({
+      status: "success",
+      data: ObjectData,
+    });
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

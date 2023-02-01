@@ -1,1 +1,39 @@
-[{"id":1,"lastName":"Snow","firstName":"Jon","phoneNumber":"99119911","age":35},{"id":22,"lastName":"Lannister","firstName":"Cersei","age":42},{"id":25,"lastName":"Targaryen","firstName":"Daenerys","age":null},{"id":26,"lastName":"Melisandre","firstName":null,"age":150},{"id":"1675248442605","firstName":"Sodgerel","lastName":"Gansukh","age":"38","phoneNumber":"885630003","email":"sodoo75@gmail.com","password":"1234"},{"id":"1675255801127","firstName":"Sodoo","lastName":"Gansukh","age":"38","phoneNumber":"88563003","email":"sod","password":"321"},{"id":"1675255802119","firstName":"Sodoo","lastName":"Gansukh","age":"38","phoneNumber":"88563003","email":"sod","password":"321"}]
+[
+  {
+    "id": 1,
+    "lastName": "Snow",
+    "firstName": "Jon",
+    "phoneNumber": "99119911",
+    "age": 35
+  },
+  { "id": 22, "lastName": "Lannister", "firstName": "Cersei", "age": 42 },
+  { "id": 25, "lastName": "Targaryen", "firstName": "Daenerys", "age": null },
+  { "id": 26, "lastName": "Melisandre", "firstName": null, "age": 150 },
+  {
+    "id": "1675248442605",
+    "firstName": "Sodgerel",
+    "lastName": "Gansukh",
+    "age": "38",
+    "phoneNumber": "885630003",
+    "email": "sodoo75@gmail.com",
+    "password": "1234"
+  },
+  {
+    "id": "1675255801127",
+    "firstName": "Sodoo",
+    "lastName": "Gansukh",
+    "age": "38",
+    "phoneNumber": "88563003",
+    "email": "sod",
+    "password": "321"
+  },
+  {
+    "id": "1675255802119",
+    "firstName": "Sodoo",
+    "lastName": "Gansukh",
+    "age": "38",
+    "phoneNumber": "88563003",
+    "email": "sod",
+    "password": "321"
+  }
+]

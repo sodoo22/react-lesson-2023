@@ -32,6 +32,7 @@ import {
   useLocation,
 } from "react-router-dom";
 import UserAdd from "../pages/UserAdd";
+import ProductAdd from "./ProductAdd";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -82,6 +83,11 @@ export default function Home(props) {
         <ListItemLink
           to="/"
           primary="Products"
+          icon={<ShoppingBagOutlinedIcon />}
+        />
+        <ListItemLink
+          to="/products/add"
+          primary="Product Add"
           icon={<ShoppingBagOutlinedIcon />}
         />
         <ListItemLink
@@ -218,6 +224,7 @@ export default function Home(props) {
         </Routes>
         <Routes>
           <Route path="/" element={<Products />} />
+          <Route path="/products/add" element={<ProductAdd />} />
           <Route path="/user" element={<Users />} />
           <Route path="/user/add" element={<UserAdd />} />
         </Routes>
