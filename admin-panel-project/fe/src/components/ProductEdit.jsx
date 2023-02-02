@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
@@ -13,6 +13,7 @@ export default function ProductEdit() {
   console.log("data", data.state.product);
   const [productsData, setProductsData] = useState();
   const [currentProduct, setCurrentProduct] = useState(data.state.product[0]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllData();
@@ -48,6 +49,7 @@ export default function ProductEdit() {
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
     setProductsData(FETCHED_JSON.data);
+    navigate("/");
   }
 
   function handleTitle(e) {

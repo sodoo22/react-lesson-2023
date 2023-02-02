@@ -11,11 +11,12 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function ProductAdd() {
   const URL = "http://localhost:8080/products";
   const [users, setUsers] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllData();
@@ -52,11 +53,12 @@ export default function ProductAdd() {
     const FETCHED_JSON = await FETCHED_DATA.json();
     // console.log(FETCHED_JSON);
     setUsers(FETCHED_JSON.data);
+    navigate("/");
   }
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form action="localhost:3000" onSubmit={handleSubmit}>
         <Box
           sx={{
             margin: "0 auto",
@@ -83,11 +85,11 @@ export default function ProductAdd() {
           <TextField name="technology" label="Technology" variant="outlined" />
           <TextField name="rating" label="Rating" variant="outlined" />
           <Stack spacing={2} direction="row">
-            <Link to={"/"}>
-              <Button type="submit" variant="contained">
-                Save
-              </Button>
-            </Link>
+            {/* <Link to={"/"}> */}
+            <Button type="submit" variant="contained">
+              Save
+            </Button>
+            {/* </Link> */}
             <Button variant="outlined">Back</Button>
           </Stack>
         </Box>
