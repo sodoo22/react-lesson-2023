@@ -11,7 +11,6 @@ app.use(cors());
 app.use(express.json());
 
 app.delete("/users", (request, response) => {
-  console.log(request.body);
   const body = request.body;
 
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
@@ -108,7 +107,6 @@ app.post("/users", (request, response) => {
 });
 
 app.put("/users", (request, response) => {
-  console.log(request.body);
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
     if (readError) {
       response.json({
