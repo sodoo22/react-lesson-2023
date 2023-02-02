@@ -1,60 +1,43 @@
+import { useParams } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Radio from "@mui/material/Radio";
-import RadioGroup from "@mui/material/RadioGroup";
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Checkbox from "@mui/material/Checkbox";
-import FormGroup from "@mui/material/FormGroup";
 import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
-import { useEffect, useState } from "react";
 
-export default function ProductAdd() {
-  const URL = "http://localhost:8080/products";
-  const [users, setUsers] = useState();
-
-  useEffect(() => {
-    fetchAllData();
-  }, []);
-
-  async function fetchAllData() {
-    const FETCHED_DATA = await fetch(URL); // Response
-    const FETCHED_JSON = await FETCHED_DATA.json(); // {status: 'success, data: [{id: ...}]}
-    console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
-  }
+export default function ProductEdit() {
+  const data = useParams();
+  console.log(data);
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const postData = {
-      title: e.target.title.value,
-      subTitle: e.target.subTitle.value,
-      price: e.target.price.value,
-      discount: e.target.discount.value,
-      discription: e.target.discription.value,
-      code: e.target.code.value,
-      rating: e.target.rating.value,
-    };
+    // const postData = {
+    //   title: e.target.title.value,
+    //   subTitle: e.target.subTitle.value,
+    //   price: e.target.price.value,
+    //   discount: e.target.discount.value,
+    //   discription: e.target.discription.value,
+    //   code: e.target.code.value,
+    //   rating: e.target.rating.value,
+    // };
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    };
+    // const options = {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(postData),
+    // };
 
-    const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    // console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
+    // const FETCHED_DATA = await fetch(URL, options);
+    // const FETCHED_JSON = await FETCHED_DATA.json();
+    // // console.log(FETCHED_JSON);
+    // setUsers(FETCHED_JSON.data);
   }
 
   return (
     <div>
+      <h1>Product Edit Page</h1>
       <form onSubmit={handleSubmit}>
         <Box
           sx={{
@@ -66,7 +49,7 @@ export default function ProductAdd() {
           noValidate
           autoComplete="off"
         >
-          <Typography variant="h5">New Product</Typography>
+          <Typography variant="h5">Edit Product</Typography>
           <TextField name="image" label="Image URL" variant="outlined" />
           <TextField name="title" label="Title" variant="outlined" />
           <TextField name="subTitle" label="Sub Title" variant="outlined" />

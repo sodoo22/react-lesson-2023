@@ -1,15 +1,15 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
+import { useState } from "react";
+// import AppBar from "@mui/material/AppBar";
+// import Toolbar from "@mui/material/Toolbar";
+import { AppBar, Toolbar } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
-import MailIcon from "@mui/icons-material/Mail";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -18,12 +18,12 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import PermIdentityOutlinedIcon from "@mui/icons-material/PermIdentityOutlined";
 import CssBaseline from "@mui/material/CssBaseline";
 import Users from "../pages/Users";
 import Products from "../pages/Products";
+
 import {
   Link as RouterLink,
   Route,
@@ -33,13 +33,21 @@ import {
 } from "react-router-dom";
 import UserAdd from "../pages/UserAdd";
 import ProductAdd from "./ProductAdd";
+import ProductEdit from "./ProductEdit";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
 const drawerWidth = 240;
 
 export default function Home(props) {
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [form, setForm] = useState({
+    id: "",
+    image: "",
+    title: "",
+    price: "",
+    rating: "",
+  });
+  // form.first setForm({...form, firstname: e.target.name})
 
   const handleOpenUserMenu = (event) => {
     setAnchorElUser(event.currentTarget);
@@ -90,6 +98,7 @@ export default function Home(props) {
           primary="Product Add"
           icon={<ShoppingBagOutlinedIcon />}
         />
+        <Divider />
         <ListItemLink
           to="/user"
           primary="Users"
@@ -223,8 +232,15 @@ export default function Home(props) {
           <Route path="*" element={<Content />} />
         </Routes>
         <Routes>
-          <Route path="/" element={<Products />} />
+          <Route
+            path="/"
+            element={<Products form={form} setForm={setForm} />}
+          />
           <Route path="/products/add" element={<ProductAdd />} />
+          <Route
+            path="/products/edit/:id"
+            element={<ProductEdit form={form} setForm={setForm} />}
+          />
           <Route path="/user" element={<Users />} />
           <Route path="/user/add" element={<UserAdd />} />
         </Routes>

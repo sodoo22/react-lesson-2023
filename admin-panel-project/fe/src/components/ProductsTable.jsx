@@ -3,6 +3,7 @@ import { Box, Stack } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function ProductsTable() {
   const URL = "http://localhost:8080/products";
@@ -36,20 +37,20 @@ export default function ProductsTable() {
   }
 
   const columns = [
-    { field: "id", headerName: "ID", width: 70 },
+    { field: "id", headerName: "ID", width: 130 },
     { field: "image", headerName: "Image", width: 130 },
     { field: "title", headerName: "Title", width: 200 },
     {
       field: "price",
       headerName: "Price",
       type: "number",
-      width: 110,
+      width: 80,
     },
     {
       field: "rating",
       headerName: "Rating",
       type: "number",
-      width: 110,
+      width: 70,
     },
     {
       field: "actions",
@@ -62,9 +63,11 @@ export default function ProductsTable() {
         return (
           <Box width="100%">
             <Stack direction="row" spacing={2}>
-              <Button variant="outlined" color="success">
-                Edit
-              </Button>
+              <Link to={`/products/edit/${params.row.id}`}>
+                <Button variant="outlined" color="success">
+                  Edit
+                </Button>
+              </Link>
               <Button
                 variant="outlined"
                 color="error"
