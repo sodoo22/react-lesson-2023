@@ -13,7 +13,7 @@ import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 
 export default function ProductAdd() {
-  const URL = "http://localhost:8080/users";
+  const URL = "http://localhost:8080/products";
   const [users, setUsers] = useState();
 
   useEffect(() => {
@@ -67,43 +67,25 @@ export default function ProductAdd() {
           autoComplete="off"
         >
           <Typography variant="h5">New Product</Typography>
-          <TextField name="firstName" label="First Name" variant="outlined" />
+          <TextField name="image" label="Image URL" variant="outlined" />
           <TextField name="title" label="Title" variant="outlined" />
-          <TextField name="age" label="Age" variant="outlined" />
+          <TextField name="subTitle" label="Sub Title" variant="outlined" />
+          <TextField name="price" label="Price" variant="outlined" />
+          <TextField name="discount" label="Discount" variant="outlined" />
           <TextField
-            name="phoneNumber"
-            label="Phone Number"
+            name="discription"
+            label="Discription"
             variant="outlined"
           />
-          <TextField name="email" label="E-Mail" variant="outlined" />
-          <FormControl>
-            <FormLabel id="demo-row-radio-buttons-group-label">Role</FormLabel>
-            <RadioGroup
-              row
-              aria-labelledby="demo-row-radio-buttons-group-label"
-              name="userRole"
-            >
-              <FormControlLabel
-                value="admin"
-                control={<Radio />}
-                label="Admin"
-              />
-              <FormControlLabel value="user" control={<Radio />} label="User" />
-            </RadioGroup>
-          </FormControl>
-          <FormGroup>
-            <FormLabel id="demo-row-radio-buttons-group-label">
-              Disabled
-            </FormLabel>
-            <FormControlLabel control={<Checkbox />} />
-          </FormGroup>
-          <TextField name="password" label="Password" variant="outlined" />
+          <TextField name="code" label="Code" variant="outlined" />
+          <TextField name="hashtag" label="Hashtag" variant="outlined" />
+          <TextField name="technology" label="Technology" variant="outlined" />
+          <TextField name="rating" label="Rating" variant="outlined" />
           <Stack spacing={2} direction="row">
             <Button type="submit" variant="contained">
               Save
             </Button>
-            <Button variant="outlined">Reset</Button>
-            <Button variant="outlined">Cancel</Button>
+            <Button variant="outlined">Back</Button>
           </Stack>
         </Box>
       </form>
