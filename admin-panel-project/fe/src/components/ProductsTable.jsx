@@ -63,7 +63,13 @@ export default function ProductsTable() {
         return (
           <Box width="100%">
             <Stack direction="row" spacing={2}>
-              <Link to={`/products/edit/${params.row.id}`}>
+              <Link
+                to={`/products/edit/${params.row.id}`}
+                state={{
+                  product: users.filter((p) => p.id === params.row.id),
+                }}
+                style={{ textDecoration: "none" }}
+              >
                 <Button variant="outlined" color="success">
                   Edit
                 </Button>

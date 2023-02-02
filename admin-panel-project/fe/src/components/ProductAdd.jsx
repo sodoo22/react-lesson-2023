@@ -11,6 +11,7 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function ProductAdd() {
   const URL = "http://localhost:8080/products";
@@ -82,9 +83,11 @@ export default function ProductAdd() {
           <TextField name="technology" label="Technology" variant="outlined" />
           <TextField name="rating" label="Rating" variant="outlined" />
           <Stack spacing={2} direction="row">
-            <Button type="submit" variant="contained">
-              Save
-            </Button>
+            <Link to={"/"}>
+              <Button type="submit" variant="contained">
+                Save
+              </Button>
+            </Link>
             <Button variant="outlined">Back</Button>
           </Stack>
         </Box>

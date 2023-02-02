@@ -205,6 +205,46 @@ app.delete("/products", (request, response) => {
   });
 });
 
+app.put("/products", (request, response) => {
+  console.log(request.body);
+  fs.readFile("./data/productsData.json", "utf-8", (readError, readData) => {
+    if (readError) {
+      response.json({
+        status: "File read error",
+        data: [],
+      });
+    }
+    const savedData = JSON.parse(readData);
+
+    const changedData = savedData.map((d) => {
+      if (d.id === request.body.id) {
+        (d.title = request.body.title),
+          (d.price = request.body.price),
+          (d.rating = request.body.rating);
+      }
+      return d;
+    });
+
+    fs.writeFile(
+      "./data/productsData.json",
+      JSON.stringify(changedData),
+      (writeError) => {
+        if (writeError) {
+          response.json({
+            status: "file write error",
+            data: [],
+          });
+        }
+        console.log(request.body);
+        response.json({
+          status: "success",
+          data: changedData,
+        });
+      }
+    );
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
