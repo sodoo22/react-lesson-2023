@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function UsersTable() {
   const URL = "http://localhost:8080/users";
@@ -73,9 +74,17 @@ export default function UsersTable() {
         return (
           <Box width="100%">
             <Stack direction="row" spacing={2}>
-              <Button variant="outlined" color="success">
-                Edit
-              </Button>
+              <Link
+                to={`/users/edit/${params.row.id}`}
+                state={{
+                  product: users.filter((p) => p.id === params.row.id),
+                }}
+                style={{ textDecoration: "none" }}
+              >
+                <Button variant="outlined" color="success">
+                  Edit
+                </Button>
+              </Link>
               <Button
                 variant="outlined"
                 color="error"

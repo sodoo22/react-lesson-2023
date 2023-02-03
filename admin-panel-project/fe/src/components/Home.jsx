@@ -34,6 +34,7 @@ import {
 import UserAdd from "../pages/UserAdd";
 import ProductAdd from "./ProductAdd";
 import ProductEdit from "./ProductEdit";
+import UserEdit from "./UserEdit";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const drawerWidth = 240;
@@ -100,12 +101,12 @@ export default function Home(props) {
         />
         <Divider />
         <ListItemLink
-          to="/user"
+          to="/users"
           primary="Users"
           icon={<PermIdentityOutlinedIcon />}
         />
         <ListItemLink
-          to="/user/add"
+          to="/users/add"
           primary="User Add"
           icon={<PermIdentityOutlinedIcon />}
         />
@@ -241,8 +242,12 @@ export default function Home(props) {
             path="/products/edit/:id"
             element={<ProductEdit form={form} setForm={setForm} />}
           />
-          <Route path="/user" element={<Users />} />
-          <Route path="/user/add" element={<UserAdd />} />
+          <Route
+            path="/users/edit/:id"
+            element={<UserEdit form={form} setForm={setForm} />}
+          />
+          <Route path="/users" element={<Users />} />
+          <Route path="/users/add" element={<UserAdd />} />
         </Routes>
       </Box>
     </Box>

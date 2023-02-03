@@ -13,7 +13,7 @@ import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function UserAdd() {
+export default function UserEdit() {
   const URL = "http://localhost:8080/users";
   const [users, setUsers] = useState();
   const navigate = useNavigate();
@@ -23,8 +23,8 @@ export default function UserAdd() {
   }, []);
 
   async function fetchAllData() {
-    const FETCHED_DATA = await fetch(URL); // Response
-    const FETCHED_JSON = await FETCHED_DATA.json(); // {status: 'success, data: [{id: ...}]}
+    const FETCHED_DATA = await fetch(URL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
     console.log(FETCHED_JSON);
     setUsers(FETCHED_JSON.data);
   }
@@ -69,7 +69,7 @@ export default function UserAdd() {
           noValidate
           autoComplete="off"
         >
-          <Typography variant="h5">New User</Typography>
+          <Typography variant="h5">Edit User</Typography>
           <TextField name="firstName" label="First Name" variant="outlined" />
           <TextField name="lastName" label="Last Name" variant="outlined" />
           <TextField name="age" label="Age" variant="outlined" />
@@ -103,9 +103,8 @@ export default function UserAdd() {
           <TextField name="password" label="Password" variant="outlined" />
           <Stack spacing={2} direction="row">
             <Button type="submit" variant="contained">
-              Save
+              Edit
             </Button>
-            <Button variant="outlined">Reset</Button>
             <Button variant="outlined">Cancel</Button>
           </Stack>
         </Box>

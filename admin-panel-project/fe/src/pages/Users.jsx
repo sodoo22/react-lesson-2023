@@ -9,7 +9,7 @@ export default function Users() {
   return (
     <Box sx={{ textAlign: "left" }}>
       <Typography variant="h5">Users</Typography>
-      <Link to="/user/add" style={{ textDecoration: "none" }}>
+      <Link to="/users/add" style={{ textDecoration: "none" }}>
         <Button variant="contained">NEW</Button>
       </Link>
 
