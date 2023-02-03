@@ -11,11 +11,14 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export default function UserEdit() {
   const URL = "http://localhost:8080/users";
+  let data = useLocation();
+
   const [users, setUsers] = useState();
+  const [currentUser, setCurrentUser] = useState(data.state.users);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -56,6 +59,12 @@ export default function UserEdit() {
     navigate("/users");
   }
 
+  function handleFirstName(e) {
+    setUsers({
+      ...curren,
+    });
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -70,15 +79,36 @@ export default function UserEdit() {
           autoComplete="off"
         >
           <Typography variant="h5">Edit User</Typography>
-          <TextField name="firstName" label="First Name" variant="outlined" />
-          <TextField name="lastName" label="Last Name" variant="outlined" />
-          <TextField name="age" label="Age" variant="outlined" />
+          <TextField
+            name="firstName"
+            label="First Name"
+            variant="outlined"
+            onChange={handleFirstName}
+          />
+          <TextField
+            name="lastName"
+            label="Last Name"
+            variant="outlined"
+            onChange={handleLastName}
+          />
+          <TextField
+            name="age"
+            label="Age"
+            variant="outlined"
+            onChange={handleAge}
+          />
           <TextField
             name="phoneNumber"
             label="Phone Number"
             variant="outlined"
+            onChange={handlePhoneNumber}
           />
-          <TextField name="email" label="E-Mail" variant="outlined" />
+          <TextField
+            name="email"
+            label="E-Mail"
+            variant="outlined"
+            onChange={handleEmail}
+          />
           <FormControl>
             <FormLabel id="demo-row-radio-buttons-group-label">Role</FormLabel>
             <RadioGroup
@@ -100,7 +130,12 @@ export default function UserEdit() {
             </FormLabel>
             <FormControlLabel control={<Checkbox />} />
           </FormGroup>
-          <TextField name="password" label="Password" variant="outlined" />
+          <TextField
+            name="password"
+            label="Password"
+            variant="outlined"
+            onChange={handlePassword}
+          />
           <Stack spacing={2} direction="row">
             <Button type="submit" variant="contained">
               Edit
