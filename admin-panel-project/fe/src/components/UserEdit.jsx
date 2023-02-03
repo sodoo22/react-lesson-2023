@@ -11,14 +11,14 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 export default function UserEdit() {
   const URL = "http://localhost:8080/users";
   let data = useLocation();
-
+  console.log("Data from Link", data.state.user[0]);
   const [users, setUsers] = useState();
-  const [currentUser, setCurrentUser] = useState(data.state.users);
+  const [currentUser, setCurrentUser] = useState(data.state.user[0]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +34,8 @@ export default function UserEdit() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const postData = {
+    const putData = {
+      id: currentUser.id,
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
       age: e.target.age.value,
@@ -45,11 +46,11 @@ export default function UserEdit() {
     };
 
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(postData),
+      body: JSON.stringify(putData),
     };
 
     const FETCHED_DATA = await fetch(URL, options);
@@ -61,7 +62,43 @@ export default function UserEdit() {
 
   function handleFirstName(e) {
     setUsers({
-      ...curren,
+      ...currentUser,
+      firstName: e.target.value,
+    });
+  }
+
+  function handleLastName(e) {
+    setUsers({
+      ...currentUser,
+      lastName: e.target.value,
+    });
+  }
+
+  function handleAge(e) {
+    setUsers({
+      ...currentUser,
+      age: e.target.value,
+    });
+  }
+
+  function handlePhoneNumber(e) {
+    setUsers({
+      ...currentUser,
+      phoneNumber: e.target.value,
+    });
+  }
+
+  function handleEmail(e) {
+    setUsers({
+      ...currentUser,
+      email: e.target.value,
+    });
+  }
+
+  function handlePassword(e) {
+    setUsers({
+      ...currentUser,
+      password: e.target.value,
     });
   }
 
@@ -83,30 +120,35 @@ export default function UserEdit() {
             name="firstName"
             label="First Name"
             variant="outlined"
+            defaultValue={currentUser.firstName}
             onChange={handleFirstName}
           />
           <TextField
             name="lastName"
             label="Last Name"
             variant="outlined"
+            defaultValue={currentUser.lastName}
             onChange={handleLastName}
           />
           <TextField
             name="age"
             label="Age"
             variant="outlined"
+            defaultValue={currentUser.age}
             onChange={handleAge}
           />
           <TextField
             name="phoneNumber"
             label="Phone Number"
             variant="outlined"
+            defaultValue={currentUser.phoneNumber}
             onChange={handlePhoneNumber}
           />
           <TextField
             name="email"
             label="E-Mail"
             variant="outlined"
+            defaultValue={currentUser.email}
             onChange={handleEmail}
           />
           <FormControl>

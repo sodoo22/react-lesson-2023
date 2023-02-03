@@ -110,6 +110,49 @@ app.post("/users", (request, response) => {
   });
 });
 
+app.put("/users", (request, response) => {
+  console.log(request.body);
+  fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
+    if (readError) {
+      response.json({
+        status: "File read error",
+        data: [],
+      });
+    }
+    const savedData = JSON.parse(readData);
+
+    const changedData = savedData.map((d) => {
+      if (d.id === request.body.id) {
+        (d.firstName = request.body.firstName),
+          (d.lastName = request.body.lastName),
+          (d.age = request.body.age);
+        d.phoneNumber = request.body.phoneNumber;
+        d.email = request.body.email;
+        d.password = request.body.password;
+      }
+      return d;
+    });
+
+    fs.writeFile(
+      "./data/users.json",
+      JSON.stringify(changedData),
+      (writeError) => {
+        if (writeError) {
+          response.json({
+            status: "file write error",
+            data: [],
+          });
+        }
+        console.log(request.body);
+        response.json({
+          status: "success",
+          data: changedData,
+        });
+      }
+    );
+  });
+});
+
 app.get("/products", (request, response) => {
   fs.readFile("./data/productsData.json", "utf-8", (readError, readData) => {
     if (readError) {

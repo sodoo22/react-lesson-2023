@@ -77,7 +77,7 @@ export default function UsersTable() {
               <Link
                 to={`/users/edit/${params.row.id}`}
                 state={{
-                  product: users.filter((p) => p.id === params.row.id),
+                  user: users.filter((p) => p.id === params.row.id),
                 }}
                 style={{ textDecoration: "none" }}
               >
