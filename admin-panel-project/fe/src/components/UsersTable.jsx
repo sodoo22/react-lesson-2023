@@ -1,4 +1,4 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
@@ -104,6 +104,7 @@ export default function UsersTable() {
 
   return (
     <Box style={{ height: 640, width: "100%", textAlign: "left" }}>
+      <Typography variant="h5">Users</Typography>
       {users && (
         <DataGrid
           rows={users}

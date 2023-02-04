@@ -7,10 +7,9 @@ import { Link } from "react-router-dom";
 
 export default function Users() {
   return (
-    <Box sx={{ textAlign: "left" }}>
-      <Typography variant="h5">Users</Typography>
+    <Box sx={{ textAlign: "center" }}>
       <Link to="/users/add" style={{ textDecoration: "none" }}>
-        <Button variant="contained">NEW</Button>
+        <Button variant="contained">New User</Button>
       </Link>
 
       <UsersTable />
