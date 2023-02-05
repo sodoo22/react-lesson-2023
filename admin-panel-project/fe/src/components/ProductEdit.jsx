@@ -29,6 +29,7 @@ export default function ProductEdit() {
     e.preventDefault();
     const putData = {
       id: currentProduct.id,
+      productImageUrl: e.target.productImageUrl.value,
       title: e.target.title.value,
       subTitle: e.target.subTitle.value,
       price: e.target.price.value,
@@ -50,6 +51,13 @@ export default function ProductEdit() {
     const FETCHED_JSON = await FETCHED_DATA.json();
     setProductsData(FETCHED_JSON.data);
     navigate("/");
+  }
+
+  function handleImage(e) {
+    setCurrentProduct({
+      ...currentProduct,
+      productImageUrl: e.target.value,
+    });
   }
 
   function handleTitle(e) {
@@ -96,7 +104,13 @@ export default function ProductEdit() {
           autoComplete="off"
         >
           <Typography variant="h5">Edit Product</Typography>
-          <TextField name="image" label="Image URL" variant="outlined" />
+          <TextField
+            name="productImageUrl"
+            label="Image URL"
+            variant="outlined"
+            defaultValue={currentProduct.productImageUrl}
+            onChange={handleImage}
+          />
           <TextField
             name="title"
             label="Title"

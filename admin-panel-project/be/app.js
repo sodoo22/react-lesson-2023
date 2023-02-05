@@ -176,6 +176,7 @@ app.post("/products", (request, response) => {
 
   const newUser = {
     id: Date.now().toString(),
+    productImageUrl: body.productImageUrl,
     title: body.title,
     subTitle: body.subTitle,
     price: body.price,
@@ -261,7 +262,8 @@ app.put("/products", (request, response) => {
 
     const changedData = savedData.map((d) => {
       if (d.id === request.body.id) {
-        (d.title = request.body.title),
+        (d.productImageUrl = request.body.productImageUrl),
+          (d.title = request.body.title),
           (d.price = request.body.price),
           (d.rating = request.body.rating);
       }

@@ -108,7 +108,7 @@ export default function UserEdit() {
         <Box
           sx={{
             margin: "0 auto",
-            width: 400,
+            maxWidth: 400,
             textAlign: "left",
             "& > :not(style)": { m: 1, width: "100%" },
           }}

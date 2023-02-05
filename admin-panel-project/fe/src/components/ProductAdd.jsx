@@ -32,6 +32,7 @@ export default function ProductAdd() {
   async function handleSubmit(e) {
     e.preventDefault();
     const postData = {
+      productImageUrl: e.target.productImageUrl.value,
       title: e.target.title.value,
       subTitle: e.target.subTitle.value,
       price: e.target.price.value,
@@ -70,7 +71,11 @@ export default function ProductAdd() {
           autoComplete="off"
         >
           <Typography variant="h5">New Product</Typography>
-          <TextField name="image" label="Image URL" variant="outlined" />
+          <TextField
+            name="productImageUrl"
+            label="Image URL"
+            variant="outlined"
+          />
           <TextField name="title" label="Title" variant="outlined" />
           <TextField name="subTitle" label="Sub Title" variant="outlined" />
           <TextField name="price" label="Price" variant="outlined" />

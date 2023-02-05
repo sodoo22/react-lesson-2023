@@ -38,7 +38,7 @@ export default function ProductsTable() {
 
   const columns = [
     { field: "id", headerName: "ID", width: 130 },
-    { field: "image", headerName: "Image", width: 130 },
+    { field: "productImageUrl", headerName: "Image", width: 130 },
     { field: "title", headerName: "Title", width: 200 },
     {
       field: "price",
