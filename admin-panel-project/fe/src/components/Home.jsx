@@ -1,11 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-// import AppBar from "@mui/material/AppBar";
-// import Toolbar from "@mui/material/Toolbar";
-import { AppBar, Toolbar } from "@mui/material";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
+import { AppBar, Toolbar, Typography, Menu, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
@@ -15,7 +10,6 @@ import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
@@ -35,6 +29,7 @@ import UserAdd from "../pages/UserAdd";
 import ProductAdd from "./ProductAdd";
 import ProductEdit from "./ProductEdit";
 import UserEdit from "./UserEdit";
+import { orange } from "@mui/material/colors";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const drawerWidth = 240;
