@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import { useState } from "react";
 import List from "./components/List";
+import StopWatch from "./components/StopWatch";
 
 function App() {
   const [isLarge, setIsLarge] = useState(false);
@@ -10,7 +11,8 @@ function App() {
   return (
     <div className="App">
       <h1>Day-58-useRef</h1>
-      <label>
+      <StopWatch />
+      {/* <label>
         <input
           type="checkbox"
           checked={isLarge}
@@ -18,7 +20,7 @@ function App() {
         />
         Use large Image <hr />
       </label>
-      <List imageSize={imageSize} />
+      <List imageSize={imageSize} /> */}
     </div>
   );
 }
