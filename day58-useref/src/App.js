@@ -3,6 +3,8 @@ import "./App.css";
 import { useState } from "react";
 import List from "./components/List";
 import StopWatch from "./components/StopWatch";
+import InputFocus from "./components/InputFocus";
+import VideoPlayer from "./components/VideoPlayer";
 
 function App() {
   const [isLarge, setIsLarge] = useState(false);
@@ -11,7 +13,9 @@ function App() {
   return (
     <div className="App">
       <h1>Day-58-useRef</h1>
-      <StopWatch />
+      <VideoPlayer />
+      {/* <InputFocus /> */}
+      {/* <StopWatch /> */}
       {/* <label>
         <input
           type="checkbox"
