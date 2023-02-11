@@ -1,38 +1,66 @@
+import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Thumbs } from "swiper";
 import images from "../data/images";
-import { useState, useRef } from "react";
-import { Freemode, Thumbs } from "swiper";
 
-const SpiwerUI = function () {
-  const swiperRef = useRef(null);
+const SwiperUI = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
-  const slides = images.map((image, index) => {
-    return (
-      <SwiperSlide key={index}>
-        <img src={image.url} alt="image" />
-      </SwiperSlide>
-    );
-  });
+  const [activeImage, setActiveImage] = useState(0);
   return (
-    <div>
-      <h1>Swiper-JS with React</h1>
+    <main>
+      {/* undsen zurag garah swiper */}
       <Swiper
-        spaceBetween={50}
-        slidesPerView={3}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-      ></Swiper>
-      {slides}
+        modules={[Thumbs]}
+        onSlideChange={(e) => {
+          setActiveImage(e.activeIndex);
+        }}
+        thumbs={{
+          swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
+        }}
+        slidesPerView={1}
+      >
+        {images.map((image) => {
+          return (
+            <SwiperSlide key={image.id}>
+              <img src={image.url} style={{ width: "100%", height: "500px" }} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+
+      {/* thumbnail garah swiper - neg huudas deer 4 zurag garna */}
       <Swiper
-        spaceBetween={50}
-        slidesPerView={3}
-        onSlideChange={() => console.log("slide change")}
+        modules={[Thumbs]}
+        watchSlidesProgress
         onSwiper={setThumbsSwiper}
-      ></Swiper>
-      {slides}
-    </div>
+        slidesPerView={4}
+      >
+        {images.map((image, index) => {
+          return (
+            <SwiperSlide key={image.id}>
+              <div style={{ position: "relative" }}>
+                <img
+                  src={image.url}
+                  style={{ width: "100%", height: "200px" }}
+                />
+                <div
+                  style={{
+                    position: "absolute",
+                    top: 0,
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    backgroundColor:
+                      index == activeImage ? "rgba(0,0,0,0.5)" : "transparent",
+                  }}
+                ></div>
+              </div>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </main>
   );
 };
 
-export { SpiwerUI };
+export default SwiperUI;
