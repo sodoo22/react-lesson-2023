@@ -29,7 +29,6 @@ app.post("/login", (request, response) => {
 
     // JSON stringees objecto bolgono
     const usersArrayObj = JSON.parse(readData);
-
     const foundUser = usersArrayObj.filter((user) => body.email === user.email);
 
     // User users.json d baihgui bol
@@ -110,6 +109,7 @@ app.post("/register", (request, response) => {
         if (err) {
           response.json({
             status: "bcrypt genarating salt error",
+            data: [],
           });
         }
 
@@ -138,8 +138,9 @@ app.post("/register", (request, response) => {
             JSON.stringify(readDataObj),
             (writeError) => {
               if (writeError) {
-                response({
+                response.json({
                   status: "file write error",
+                  data: [],
                 });
               }
               response.json({
@@ -176,6 +177,7 @@ app.get("/users/roles", (request, response) => {
     if (readError) {
       response.json({
         status: "file does not exist",
+        data: [],
       });
     }
     response.json({

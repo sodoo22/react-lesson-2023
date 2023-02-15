@@ -11,7 +11,6 @@ import { ToastContainer, toast } from "react-toastify";
 
 export default function LoginForm() {
   const URL = "http://localhost:8080/login";
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -34,10 +33,10 @@ export default function LoginForm() {
     const FETCHED_JSON = await FETCHED_DATA.json();
 
     if (FETCHED_JSON.status === "success") {
-      toast("You are approved to login");
+      toast.success("You are approved to login");
       navigate("/users");
     } else {
-      toast(FETCHED_JSON.status);
+      toast.error(FETCHED_JSON.status);
     }
 
     console.log(FETCHED_JSON);
