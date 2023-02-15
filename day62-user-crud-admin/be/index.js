@@ -5,15 +5,16 @@ const cors = require("cors");
 const fs = require("fs");
 const { request } = require("http");
 const { response } = require("express");
+const bcrypt = require("bcrypt");
 
 const app = express();
 const PORT = 8080;
+const SALT_ROUNDS = 10;
 
 app.use(cors());
 app.use(express.json());
 
 // API User Login Password
-
 app.post("/login", (request, response) => {
   const body = request.body;
   console.log(body);
@@ -42,39 +43,45 @@ app.post("/login", (request, response) => {
       const foundUserObj = foundUser[0];
       console.log(foundUserObj);
 
-      if (foundUserObj.password !== body.password) {
-        response.json({
-          status: "Username or Password do not match",
-        });
-      } else {
-        response.json({
-          status: "success",
-          data: {
-            email: foundUserObj.email,
-            firstName: foundUserObj.userName,
-            lastName: foundUserObj.lastName,
-          },
-        });
-      }
+      const plainPassword = body.password;
+      const savedPassword = foundUserObj.password;
+
+      bcrypt.compare(
+        plainPassword,
+        savedPassword,
+        (compareError, compareResult) => {
+          if (compareError) {
+            response.json({
+              status: "Username or Password do not match",
+              data: [],
+            });
+          }
+
+          if (compareResult) {
+            response.json({
+              status: "success",
+              data: {
+                email: foundUserObj.email,
+                firstName: foundUserObj.userName,
+                lastName: foundUserObj.lastName,
+              },
+            });
+          } else {
+            response.json({
+              status: "Username or Password do not match",
+              data: [],
+            });
+          }
+        }
+      );
     }
   });
 });
 
 // API User Register
-
 app.post("/register", (request, response) => {
   const body = request.body;
   console.log(body);
-
-  //   const newUser = {
-  //     id: Date.now().toString(),
-  //     firstName: body.firstName,
-  //     lastName: body.lastName,
-  //     email: body.email,
-  //     password: body.password,
-  //     address: body.address,
-  //     role: body.role,
-  //   };
 
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
     if (readError) {
@@ -97,34 +104,57 @@ app.post("/register", (request, response) => {
       const roleData = JSON.parse(readData);
       const roleName = roleData.filter((role) => role.id == body.role)[0];
 
-      const userData = {
-        ...body,
-        role: roleName,
-      };
-      readDataObj.push(userData);
+      const userPassword = body.password;
 
-      // fs write
-      fs.writeFile(
-        "./data/users.json",
-        JSON.stringify(readDataObj),
-        (writeError) => {
-          if (writeError) {
-            response({
-              status: "file write error",
-            });
-          }
+      bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
+        if (err) {
           response.json({
-            status: "success",
-            data: readDataObj,
+            status: "bcrypt genarating salt error",
           });
         }
-      );
+
+        bcrypt.hash(userPassword, salt, (hashError, hashData) => {
+          if (hashError) {
+            response.json({
+              status: "hashing has error",
+              data: [],
+            });
+          }
+
+          console.log("hashed Data", hashData);
+          const newUser = {
+            firstName: body.firstName,
+            lastName: body.lastName,
+            email: body.email,
+            password: hashData,
+            address: body.address,
+            role: roleName,
+          };
+          readDataObj.push(newUser);
+
+          // fs write
+          fs.writeFile(
+            "./data/users.json",
+            JSON.stringify(readDataObj),
+            (writeError) => {
+              if (writeError) {
+                response({
+                  status: "file write error",
+                });
+              }
+              response.json({
+                status: "success",
+                data: readDataObj,
+              });
+            }
+          );
+        });
+      });
     });
   });
 });
 
 // API get all users
-
 app.get("/users", (request, response) => {
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
     if (readError) {
@@ -141,7 +171,6 @@ app.get("/users", (request, response) => {
 });
 
 // API get all user roles
-
 app.get("/users/roles", (request, response) => {
   fs.readFile("./data/userRole.json", "utf-8", (readError, readData) => {
     if (readError) {
