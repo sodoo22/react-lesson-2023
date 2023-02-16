@@ -14,6 +14,7 @@ export default function CategoryForm() {
       },
       body: JSON.stringify({
         catName: e.target.catName.value,
+        isEdit: false,
       }),
     };
     // console.log(options);
