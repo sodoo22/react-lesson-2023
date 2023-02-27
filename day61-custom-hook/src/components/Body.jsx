@@ -20,7 +20,7 @@ export default function Body() {
   return (
     <div className={styleClass}>
       <p>Body</p>
-      {response.message && <img src={response.message} alt="dog" />}
+      {/* {response.message && <img src={response.message} alt="dog" />} */}
     </div>
   );
 }
