@@ -31,3 +31,17 @@ export async function hireEmployee(
   ]);
   return rows;
 }
+
+export async function updateEmployee(empNo, lastName, gender) {
+  const query = `UPDATE employees SET last_name='${lastName}', gender='${gender}' WHERE emp_no=${empNo}`;
+  const [row] = await pool.query(query);
+
+  return row;
+}
+
+export async function fireEmployee(empNo) {
+  const query = `DELETE FROM employees WHERE emp_no=${empNo}`;
+  const [row] = await pool.query(query);
+
+  return row;
+}
