@@ -30,8 +30,6 @@ import ProductAdd from "./ProductAdd";
 import ProductEdit from "./ProductEdit";
 import UserEdit from "./UserEdit";
 import { orange } from "@mui/material/colors";
-import UserRoleList from "../pages/UsersRoleList";
-import UserRoleAdd from "../pages/UserRoleAdd";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const drawerWidth = 240;
@@ -105,17 +103,6 @@ export default function Home(props) {
         <ListItemLink
           to="/users/add"
           primary="User Add"
-          icon={<PermIdentityOutlinedIcon />}
-        />
-        <Divider />
-        <ListItemLink
-          to="/users-role"
-          primary="Users Role"
-          icon={<PermIdentityOutlinedIcon />}
-        />
-        <ListItemLink
-          to="/users-role/add"
-          primary="User Role Add"
           icon={<PermIdentityOutlinedIcon />}
         />
       </List>
@@ -256,13 +243,6 @@ export default function Home(props) {
           />
           <Route path="/users" element={<Users />} />
           <Route path="/users/add" element={<UserAdd />} />
-          {/* --------------------------------------------------------- USER_ROLE------------- */}
-          <Route
-            path="/users-role/edit/:id"
-            element={<UserEdit form={form} setForm={setForm} />}
-          />
-          <Route path="/users-role" element={<UserRoleList />} />
-          <Route path="/users-role/add" element={<UserRoleAdd />} />
         </Routes>
       </Box>
     </Box>
