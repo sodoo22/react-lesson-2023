@@ -11,11 +11,14 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-export default function UserRoleAdd() {
+export default function UserRoleUpdate() {
   const URL = "http://localhost:8080/user-role";
+  let data = useLocation();
+  console.log("Data from Link", data.state.user[0]);
   const [users, setUsers] = useState();
+  const [currentUser, setCurrentUser] = useState(data.state.user[0]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,31 +26,39 @@ export default function UserRoleAdd() {
   }, []);
 
   async function fetchAllData() {
-    const FETCHED_DATA = await fetch(URL); // Response
-    const FETCHED_JSON = await FETCHED_DATA.json(); // {status: 'success, data: [{id: ...}]}
+    const FETCHED_DATA = await fetch(URL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
     console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
+    setUsers(FETCHED_JSON);
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const postData = {
-      userRoleName: e.target.roleName.value,
+    const putData = {
+      id: currentUser.id,
+      userRoleName: e.target.userRoleName.value,
     };
 
     const options = {
-      method: "POST",
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(postData),
+      body: JSON.stringify(putData),
     };
 
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
     // console.log(FETCHED_JSON);
     setUsers(FETCHED_JSON.data);
-    navigate("/users-role");
+    navigate("/user-role");
+  }
+
+  function handleRoleName(e) {
+    setUsers({
+      ...currentUser,
+      userRoleName: e.target.value,
+    });
   }
 
   return (
@@ -63,12 +74,17 @@ export default function UserRoleAdd() {
           noValidate
           autoComplete="off"
         >
-          <Typography variant="h5">Add User Role</Typography>
-          <TextField name="roleName" label="Role Name" variant="outlined" />
-
-          <Stack sx={{ justifyContent: "center" }} spacing={2} direction="row">
+          <Typography variant="h5">User Role Edit</Typography>
+          <TextField
+            name="userRoleName"
+            label="User Role Name"
+            variant="outlined"
+            defaultValue={currentUser.userRoleName}
+            onChange={handleRoleName}
+          />
+          <Stack spacing={2} direction="row">
             <Button type="submit" variant="contained">
-              Save
+              Edit
             </Button>
             <Button variant="outlined">Cancel</Button>
           </Stack>

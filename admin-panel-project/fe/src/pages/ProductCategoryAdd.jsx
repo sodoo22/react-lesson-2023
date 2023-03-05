@@ -13,8 +13,8 @@ import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export default function UserRoleAdd() {
-  const URL = "http://localhost:8080/user-role";
+export default function ProductCategoryAdd() {
+  const URL = "http://localhost:8080/product-category";
   const [users, setUsers] = useState();
   const navigate = useNavigate();
 
@@ -32,7 +32,8 @@ export default function UserRoleAdd() {
   async function handleSubmit(e) {
     e.preventDefault();
     const postData = {
-      userRoleName: e.target.roleName.value,
+      categoryName: e.target.categoryName.value,
+      categoryDescription: e.target.categoryDescription.value,
     };
 
     const options = {
@@ -47,7 +48,7 @@ export default function UserRoleAdd() {
     const FETCHED_JSON = await FETCHED_DATA.json();
     // console.log(FETCHED_JSON);
     setUsers(FETCHED_JSON.data);
-    navigate("/users-role");
+    navigate("/product-category");
   }
 
   return (
@@ -63,8 +64,17 @@ export default function UserRoleAdd() {
           noValidate
           autoComplete="off"
         >
-          <Typography variant="h5">Add User Role</Typography>
-          <TextField name="roleName" label="Role Name" variant="outlined" />
+          <Typography variant="h5">Add New Category</Typography>
+          <TextField
+            name="categoryName"
+            label="Category Name"
+            variant="outlined"
+          />
+          <TextField
+            name="categoryDescription"
+            label="Category Description"
+            variant="outlined"
+          />
 
           <Stack sx={{ justifyContent: "center" }} spacing={2} direction="row">
             <Button type="submit" variant="contained">

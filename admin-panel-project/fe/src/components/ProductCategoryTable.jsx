@@ -4,13 +4,13 @@ import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function UsersRoleTable() {
-  const URL = "http://localhost:8080/user-role";
+export default function ProductCategoryTable() {
+  const URL = "http://localhost:8080/product-category";
   const [users, setUsers] = useState();
 
   useEffect(() => {
     fetchAllData();
-  }, [users]); // ?????????????????????????????????????
+  }, [users]); // ?????????????????????
 
   async function fetchAllData() {
     const FETCHED_DATA = await fetch(URL);
@@ -27,17 +27,22 @@ export default function UsersRoleTable() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userRoleId: id,
+        id: id,
       }),
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    setUsers(FETCHED_JSON);
+    setUsers(FETCHED_JSON.data);
   }
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "user_role_name", headerName: "Role Name", width: 130 },
+    { field: "category_name", headerName: "Category Name", width: 130 },
+    {
+      field: "category_description",
+      headerName: "Category Description",
+      width: 160,
+    },
     {
       field: "editDelete",
       headerName: "Edit / Delele",
@@ -50,7 +55,7 @@ export default function UsersRoleTable() {
           <Box width="100%">
             <Stack direction="row" spacing={2}>
               <Link
-                to={`/user-role/edit/${params.row.id}`}
+                to={`/users/edit/${params.row.id}`}
                 state={{
                   user: users.filter((p) => p.id === params.row.id),
                 }}
@@ -79,7 +84,7 @@ export default function UsersRoleTable() {
 
   return (
     <Box style={{ height: 640, width: "100%", textAlign: "left" }}>
-      <Typography variant="h5">Users Role List</Typography>
+      <Typography variant="h5">Prodcut Category List</Typography>
       {users && (
         <DataGrid
           rows={users}

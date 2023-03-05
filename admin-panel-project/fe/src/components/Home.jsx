@@ -32,6 +32,9 @@ import UserEdit from "./UserEdit";
 import { orange } from "@mui/material/colors";
 import UserRoleList from "../pages/UsersRoleList";
 import UserRoleAdd from "../pages/UserRoleAdd";
+import ProductCategoryList from "../pages/ProductCategoryList";
+import ProductCategoryAdd from "../pages/ProductCategoryAdd";
+import UserRoleUpdate from "../pages/UserRoleUpdate";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const drawerWidth = 240;
@@ -116,6 +119,17 @@ export default function Home(props) {
         <ListItemLink
           to="/users-role/add"
           primary="User Role Add"
+          icon={<PermIdentityOutlinedIcon />}
+        />
+        <Divider />
+        <ListItemLink
+          to="/product-category"
+          primary="Product Category"
+          icon={<PermIdentityOutlinedIcon />}
+        />
+        <ListItemLink
+          to="/product-category/add"
+          primary="Product Category Add"
           icon={<PermIdentityOutlinedIcon />}
         />
       </List>
@@ -259,10 +273,20 @@ export default function Home(props) {
           {/* --------------------------------------------------------- USER_ROLE------------- */}
           <Route
             path="/users-role/edit/:id"
-            element={<UserEdit form={form} setForm={setForm} />}
+            element={<UserRoleUpdate form={form} setForm={setForm} />}
           />
           <Route path="/users-role" element={<UserRoleList />} />
           <Route path="/users-role/add" element={<UserRoleAdd />} />
+          {/* --------------------------------------------------------- CATEGORY_NAME------------- */}
+          <Route
+            path="/product-category/edit/:id"
+            element={<UserEdit form={form} setForm={setForm} />}
+          />
+          <Route path="/product-category" element={<ProductCategoryList />} />
+          <Route
+            path="/product-category/add"
+            element={<ProductCategoryAdd />}
+          />
         </Routes>
       </Box>
     </Box>
