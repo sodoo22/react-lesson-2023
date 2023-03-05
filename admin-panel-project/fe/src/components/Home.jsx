@@ -5,6 +5,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Avatar from "@mui/material/Avatar";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import ListSubheader from "@mui/material/ListSubheader";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
@@ -35,6 +36,7 @@ import UserRoleAdd from "../pages/UserRoleAdd";
 import ProductCategoryList from "../pages/ProductCategoryList";
 import ProductCategoryAdd from "../pages/ProductCategoryAdd";
 import UserRoleUpdate from "../pages/UserRoleUpdate";
+import ProductCategoryUpdate from "../pages/ProductCategoryUpdate";
 
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 const drawerWidth = 240;
@@ -87,8 +89,16 @@ export default function Home(props) {
   const drawer = (
     <div>
       <Toolbar />
-      <Divider />
-      <List>
+      {/* <Typography variant="h7">Management</Typography> */}
+
+      <List
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Management
+          </ListSubheader>
+        }
+      >
+        <Divider />
         <ListItemLink
           to="/"
           primary="Products"
@@ -280,7 +290,7 @@ export default function Home(props) {
           {/* --------------------------------------------------------- CATEGORY_NAME------------- */}
           <Route
             path="/product-category/edit/:id"
-            element={<UserEdit form={form} setForm={setForm} />}
+            element={<ProductCategoryUpdate form={form} setForm={setForm} />}
           />
           <Route path="/product-category" element={<ProductCategoryList />} />
           <Route

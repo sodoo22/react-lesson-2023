@@ -19,3 +19,13 @@ export async function deleteProductCategory(id) {
   const [row] = await pool.query(query);
   return row;
 }
+
+export async function updateProductCategory(
+  id,
+  categoryName,
+  categoryDescription
+) {
+  const query = `UPDATE product_category SET category_name="${categoryName}", category_description="${categoryDescription}" WHERE category_id=${id}`;
+  const [row] = await pool.query(query);
+  return row;
+}

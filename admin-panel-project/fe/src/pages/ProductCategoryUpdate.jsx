@@ -13,8 +13,8 @@ import { Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-export default function UserRoleUpdate() {
-  const URL = "http://localhost:8080/user-role";
+export default function ProductCategoryUpdate() {
+  const URL = "http://localhost:8080/product-category";
   let data = useLocation();
   console.log("Data from Link", data.state.user[0]);
   const [users, setUsers] = useState();
@@ -35,8 +35,9 @@ export default function UserRoleUpdate() {
   async function handleSubmit(e) {
     e.preventDefault();
     const putData = {
-      userRoleId: currentUser.id,
-      userRoleName: e.target.userRoleName.value,
+      id: currentUser.id,
+      categoryName: e.target.categoryName.value,
+      categoryDescription: e.target.categoryDescription.value,
     };
 
     const options = {
@@ -51,13 +52,14 @@ export default function UserRoleUpdate() {
     const FETCHED_JSON = await FETCHED_DATA.json();
     // console.log(FETCHED_JSON);
     setUsers(FETCHED_JSON.data);
-    navigate("/users-role");
+    navigate("/product-category");
   }
 
   function handleRoleName(e) {
     setUsers({
       ...currentUser,
-      userRoleName: e.target.value,
+      categoryName: e.target.value,
+      categoryDescription: e.target.value,
     });
   }
 
@@ -74,12 +76,19 @@ export default function UserRoleUpdate() {
           noValidate
           autoComplete="off"
         >
-          <Typography variant="h5">User Role Edit</Typography>
+          <Typography variant="h5">Product Category Edit</Typography>
           <TextField
-            name="userRoleName"
-            label="User Role Name"
+            name="categoryName"
+            label="Category Name"
             variant="outlined"
-            defaultValue={currentUser.user_role_name}
+            defaultValue={currentUser.category_name}
+            onChange={handleRoleName}
+          />
+          <TextField
+            name="categoryDescription"
+            label="Category Description"
+            variant="outlined"
+            defaultValue={currentUser.category_description}
             onChange={handleRoleName}
           />
           <Stack spacing={2} direction="row">

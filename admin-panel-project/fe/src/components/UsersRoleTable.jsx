@@ -2,15 +2,16 @@ import { Button, Typography } from "@mui/material";
 import { Box, Stack } from "@mui/system";
 import { DataGrid } from "@mui/x-data-grid";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UsersRoleTable() {
   const URL = "http://localhost:8080/user-role";
   const [users, setUsers] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAllData();
-  }, [users]); // ?????????????????????????????????????
+  }, []); // ?????????????????????????????????????
 
   async function fetchAllData() {
     const FETCHED_DATA = await fetch(URL);
@@ -31,8 +32,10 @@ export default function UsersRoleTable() {
       }),
     };
     const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    setUsers(FETCHED_JSON);
+    // const FETCHED_JSON = await FETCHED_DATA.json();
+    // console.log(FETCHED_JSON);
+    // setUsers(FETCHED_JSON.data);
+    // navigate("/users-role");
   }
 
   const columns = [
@@ -50,7 +53,7 @@ export default function UsersRoleTable() {
           <Box width="100%">
             <Stack direction="row" spacing={2}>
               <Link
-                to={`/user-role/edit/${params.row.id}`}
+                to={`/users-role/edit/${params.row.id}`}
                 state={{
                   user: users.filter((p) => p.id === params.row.id),
                 }}

@@ -3,7 +3,9 @@ import {
   getProductCategory,
   addProductCategory,
   deleteProductCategory,
+  updateProductCategory,
 } from "../services/product-category-services.js";
+import user_role_router from "./users-role-routes.js";
 
 const product_category_router = express.Router();
 
@@ -31,5 +33,15 @@ product_category_router.delete(
     response.status(200).send(result);
   }
 );
+
+user_role_router.put("/product-category", async (request, response) => {
+  const body = request.body;
+  const result = await updateProductCategory(
+    body.id,
+    body.categoryName,
+    body.categoryDescription
+  );
+  response.status(200).send(result);
+});
 
 export default product_category_router;

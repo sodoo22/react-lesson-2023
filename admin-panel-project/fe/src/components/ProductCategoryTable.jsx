@@ -10,7 +10,7 @@ export default function ProductCategoryTable() {
 
   useEffect(() => {
     fetchAllData();
-  }, [users]); // ?????????????????????
+  }, []); // ?????????????????????
 
   async function fetchAllData() {
     const FETCHED_DATA = await fetch(URL);
@@ -32,6 +32,7 @@ export default function ProductCategoryTable() {
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
+    console.log(FETCHED_JSON);
     setUsers(FETCHED_JSON.data);
   }
 
@@ -55,7 +56,7 @@ export default function ProductCategoryTable() {
           <Box width="100%">
             <Stack direction="row" spacing={2}>
               <Link
-                to={`/users/edit/${params.row.id}`}
+                to={`/product-category/edit/${params.row.id}`}
                 state={{
                   user: users.filter((p) => p.id === params.row.id),
                 }}
