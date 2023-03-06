@@ -32,9 +32,9 @@ export default function UsersRoleTable() {
       }),
     };
     const FETCHED_DATA = await fetch(URL, options);
-    // const FETCHED_JSON = await FETCHED_DATA.json();
-    // console.log(FETCHED_JSON);
-    // setUsers(FETCHED_JSON.data);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    console.log(FETCHED_JSON);
+    setUsers(FETCHED_JSON);
     // navigate("/users-role");
   }
 

@@ -25,8 +25,9 @@ user_role_router.post("/user-role", async (request, response) => {
 user_role_router.delete("/user-role", async (request, response) => {
   const body = request.body;
   const result = await deleteUserRole(body.userRoleId);
+  const res = await getUserRole();
   // console.log(result);
-  response.status(200).send(result);
+  response.status(200).send(res);
 });
 
 user_role_router.put("/user-role", async (request, response) => {

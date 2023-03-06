@@ -30,7 +30,8 @@ product_category_router.delete(
   async (request, response) => {
     const body = request.body;
     const result = await deleteProductCategory(body.id);
-    response.status(200).send(result);
+    const res = await getProductCategory();
+    response.status(200).send(res);
   }
 );
 

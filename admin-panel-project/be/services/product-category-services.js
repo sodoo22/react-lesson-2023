@@ -9,9 +9,13 @@ export async function getProductCategory() {
 }
 
 export async function addProductCategory(categoryName, categoryDescription) {
-  const query = `INSERT INTO product_category (category_name, category_description) VALUES(?,?)`;
-  const [rows] = await pool.query(query, [categoryName, categoryDescription]);
-  return rows;
+  if (categoryName) {
+    const query = `INSERT INTO product_category (category_name, category_description) VALUES(?,?)`;
+    const [rows] = await pool.query(query, [categoryName, categoryDescription]);
+    return rows;
+  } else {
+    return [];
+  }
 }
 
 export async function deleteProductCategory(id) {
