@@ -21,26 +21,26 @@ app.use(users_router);
 app.use(user_role_router);
 app.use(product_category_router);
 
-// app.get("/user-role", (request, response) => {
-//   response.send(
-//     "<h1 style='text-align: center; background-color: orange'>Convert to MySQL</h1>"
-//   );
+app.get("/users", (request, response) => {
+  response.send(
+    "<h1 style='text-align: center; background-color: orange'>Convert to MySQL</h1>"
+  );
 
-//   // fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
-//   //   if (readError) {
-//   //     response.json({
-//   //       status: "file reader error",
-//   //       data: [],
-//   //     });
-//   //   }
-//   //   const ObjectData = JSON.parse(readData);
+  fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
+    if (readError) {
+      response.json({
+        status: "file reader error",
+        data: [],
+      });
+    }
+    const ObjectData = JSON.parse(readData);
 
-//   //   response.json({
-//   //     status: "success",
-//   //     data: ObjectData,
-//   //   });
-//   // });
-// });
+    response.json({
+      status: "success",
+      data: ObjectData,
+    });
+  });
+});
 
 // app.delete("/users", (request, response) => {
 //   const body = request.body;

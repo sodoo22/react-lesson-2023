@@ -16,7 +16,7 @@ export default function UsersTable() {
     const FETCHED_DATA = await fetch(URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
     console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
+    setUsers(FETCHED_JSON);
   }
 
   async function handleDelete(id) {
@@ -37,16 +37,16 @@ export default function UsersTable() {
 
   const columns = [
     { field: "id", headerName: "ID", width: 70 },
-    { field: "firstName", headerName: "First name", width: 130 },
-    { field: "lastName", headerName: "Last name", width: 130 },
+    { field: "first_name", headerName: "First name", width: 130 },
+    { field: "last_name", headerName: "Last name", width: 130 },
     {
-      field: "age",
-      headerName: "Age",
+      field: "birthdate",
+      headerName: "Birthdate",
       // type: "number",
       width: 60,
     },
     {
-      field: "phoneNumber",
+      field: "phone_number",
       headerName: "Phone Number",
       type: "number",
       width: 110,
@@ -59,9 +59,9 @@ export default function UsersTable() {
       sortable: false,
       width: 160,
       valueGetter: (params) =>
-        `${params.row.firstName || ""} ${params.row.lastName || ""}`,
+        `${params.row.first_name || ""} ${params.row.last_name || ""}`,
     },
-    { field: "userRole", headerName: "Role", width: 80 },
+    { field: "user_role_id", headerName: "Role", width: 80 },
     { field: "password", headerName: "Password", width: 80 },
     {
       field: "editDelete",

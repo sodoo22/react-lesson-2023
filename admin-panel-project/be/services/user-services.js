@@ -1,7 +1,9 @@
 import { pool } from "../config/mysql-config.js";
 
 export async function getUsers() {
-  const [rows] = await pool.query(`select * from user limit 10`);
+  const [rows] = await pool.query(
+    `select user_id as id, first_name, last_name, birthdate, email, phone_number, address, user_role_id from user`
+  );
   console.log(rows);
   return rows;
 }
@@ -12,7 +14,6 @@ export async function getMaxNo() {
 }
 
 export async function addUser(
-  userId,
   firstName,
   lastName,
   birthDate,
