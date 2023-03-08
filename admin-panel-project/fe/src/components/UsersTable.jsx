@@ -27,12 +27,12 @@ export default function UsersTable() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        userId: id,
+        id: id,
       }),
     };
     const FETCHED_DATA = await fetch(URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    setUsers(FETCHED_JSON.data);
+    setUsers(FETCHED_JSON);
   }
 
   const columns = [
@@ -61,7 +61,7 @@ export default function UsersTable() {
       valueGetter: (params) =>
         `${params.row.first_name || ""} ${params.row.last_name || ""}`,
     },
-    { field: "user_role_id", headerName: "Role", width: 80 },
+    { field: "user_role_name", headerName: "Role", width: 80 },
     { field: "password", headerName: "Password", width: 80 },
     {
       field: "editDelete",

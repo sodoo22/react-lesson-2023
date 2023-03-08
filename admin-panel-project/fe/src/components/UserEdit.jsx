@@ -120,28 +120,28 @@ export default function UserEdit() {
             name="firstName"
             label="First Name"
             variant="outlined"
-            defaultValue={currentUser.firstName}
+            defaultValue={currentUser.first_name}
             onChange={handleFirstName}
           />
           <TextField
             name="lastName"
             label="Last Name"
             variant="outlined"
-            defaultValue={currentUser.lastName}
+            defaultValue={currentUser.last_name}
             onChange={handleLastName}
           />
           <TextField
             name="age"
             label="Age"
             variant="outlined"
-            defaultValue={currentUser.age}
+            defaultValue={currentUser.birthdate}
             onChange={handleAge}
           />
           <TextField
             name="phoneNumber"
             label="Phone Number"
             variant="outlined"
-            defaultValue={currentUser.phoneNumber}
+            defaultValue={currentUser.phone_number}
             onChange={handlePhoneNumber}
           />
           <TextField

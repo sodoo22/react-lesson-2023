@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function UserAdd() {
-  const URL = "http://localhost:8080/users";
+  const URL = "http://localhost:8080/user-role";
   const [users, setUsers] = useState();
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ export default function UserAdd() {
     const FETCHED_DATA = await fetch(URL); // Response
     const FETCHED_JSON = await FETCHED_DATA.json(); // {status: 'success, data: [{id: ...}]}
     console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
+    setUsers(FETCHED_JSON);
   }
 
   async function handleSubmit(e) {
@@ -34,11 +34,12 @@ export default function UserAdd() {
     const postData = {
       firstName: e.target.firstName.value,
       lastName: e.target.lastName.value,
-      age: e.target.age.value,
-      phoneNumber: e.target.phoneNumber.value,
+      birthDate: e.target.birthDate.value,
       email: e.target.email.value,
-      userRole: e.target.userRole.value,
-      password: e.target.password.value,
+      phoneNumber: e.target.phoneNumber.value,
+      address: e.target.address.value,
+      userRoleId: e.target.userRoleId.value,
+      // password: e.target.password.value,
     };
 
     const options = {
@@ -72,28 +73,36 @@ export default function UserAdd() {
           <Typography variant="h5">New User</Typography>
           <TextField name="firstName" label="First Name" variant="outlined" />
           <TextField name="lastName" label="Last Name" variant="outlined" />
-          <TextField name="age" label="Age" variant="outlined" />
+          <TextField name="birthDate" label="Birthdate" variant="outlined" />
+          <TextField name="email" label="E-Mail" variant="outlined" />
           <TextField
+            type="number"
             name="phoneNumber"
             label="Phone Number"
             variant="outlined"
           />
-          <TextField name="email" label="E-Mail" variant="outlined" />
-          <FormControl>
+          <TextField name="address" label="Address" variant="outlined" />
+          <select name="userRoleId" id="">
+            {users &&
+              users.map((role, index) => {
+                return (
+                  <option key={index} value={role.id}>
+                    {role.user_role_name}
+                  </option>
+                );
+              })}
+          </select>
+          {/* <FormControl>
             <FormLabel id="demo-row-radio-buttons-group-label">Role</FormLabel>
             <RadioGroup
               row
               aria-labelledby="demo-row-radio-buttons-group-label"
-              name="userRole"
+              name="userRoleId"
             >
-              <FormControlLabel
-                value="admin"
-                control={<Radio />}
-                label="Admin"
-              />
-              <FormControlLabel value="user" control={<Radio />} label="User" />
+              <FormControlLabel value="1" control={<Radio />} label="Admin" />
+              <FormControlLabel value="2" control={<Radio />} label="User" />
             </RadioGroup>
-          </FormControl>
+          </FormControl> */}
           <FormGroup>
             <FormLabel id="demo-row-radio-buttons-group-label">
               Disabled

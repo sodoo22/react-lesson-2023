@@ -82,7 +82,7 @@ export default function UsersRoleTable() {
 
   return (
     <Box style={{ height: 640, width: "100%", textAlign: "left" }}>
-      <Typography variant="h5">Users Role List</Typography>
+      <Typography variant="h5">Users Role List999999999999</Typography>
       {users && (
         <DataGrid
           rows={users}
@@ -90,6 +90,7 @@ export default function UsersRoleTable() {
           pageSize={10}
           rowsPerPageOptions={[10]}
           checkboxSelection
+          disableRowSelectionOnClick
         />
       )}
     </Box>
