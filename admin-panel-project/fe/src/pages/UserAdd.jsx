@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function UserAdd() {
-  const URL = "http://localhost:8080/user-role";
+  const URL = "http://localhost:8080/users";
   const [users, setUsers] = useState();
   const navigate = useNavigate();
 
