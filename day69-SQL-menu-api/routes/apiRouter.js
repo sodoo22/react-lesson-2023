@@ -17,7 +17,7 @@ apiRouter.get("/menus", async (request, response) => {
       const children = await getChildenMenu(parent.id);
       console.log(children);
       parent.children = children;
-      return parent;
+      // return parent;
     })
   );
 
