@@ -9,17 +9,9 @@ import {
 } from "../services/employee-services.js";
 
 import { getPopularCategory } from "../services/category_services.js";
-import { search, getAllProducts } from "../services/product-services.js";
 
-emp_router.get("/products", async (request, response) => {
-  const result = await getAllProducts();
-  console.log(result);
-  response.status(200).send(result);
-});
-
-emp_router.get("/search", async (request, response) => {
-  const keyword = request.query.keyword;
-  const result = await search(keyword);
+emp_router.get("/employees", async (request, response) => {
+  const result = await getEmployees();
   console.log(result);
   response.status(200).send(result);
 });
