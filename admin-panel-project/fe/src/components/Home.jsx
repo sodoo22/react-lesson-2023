@@ -111,6 +111,17 @@ export default function Home(props) {
         />
         <Divider />
         <ListItemLink
+          to="/product-category"
+          primary="Product Category"
+          icon={<ShoppingBagOutlinedIcon />}
+        />
+        <ListItemLink
+          to="/product-category/add"
+          primary="Product Category Add"
+          icon={<ShoppingBagOutlinedIcon />}
+        />
+        <Divider />
+        <ListItemLink
           to="/users"
           primary="Users"
           icon={<PermIdentityOutlinedIcon />}
@@ -129,17 +140,6 @@ export default function Home(props) {
         <ListItemLink
           to="/users-role/add"
           primary="User Role Add"
-          icon={<PermIdentityOutlinedIcon />}
-        />
-        <Divider />
-        <ListItemLink
-          to="/product-category"
-          primary="Product Category"
-          icon={<PermIdentityOutlinedIcon />}
-        />
-        <ListItemLink
-          to="/product-category/add"
-          primary="Product Category Add"
           icon={<PermIdentityOutlinedIcon />}
         />
       </List>

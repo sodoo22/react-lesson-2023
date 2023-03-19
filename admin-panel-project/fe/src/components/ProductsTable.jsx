@@ -17,7 +17,7 @@ export default function ProductsTable() {
     const FETCHED_DATA = await fetch(URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
     console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
+    setUsers(FETCHED_JSON);
   }
 
   async function handleDelete(id) {
@@ -38,10 +38,10 @@ export default function ProductsTable() {
 
   const columns = [
     { field: "id", headerName: "ID", width: 130 },
-    { field: "productImageUrl", headerName: "Image", width: 130 },
-    { field: "title", headerName: "Title", width: 200 },
+    { field: "image_path", headerName: "Image", width: 130 },
+    { field: "product_name", headerName: "Title", width: 200 },
     {
-      field: "price",
+      field: "product_price",
       headerName: "Price",
       type: "number",
       width: 80,
