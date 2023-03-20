@@ -7,6 +7,7 @@ import cors from "cors";
 import user_role_router from "./routes/users-role-routes.js";
 import product_category_router from "./routes/product-category-routes.js";
 import users_router from "./routes/users-routes.js";
+import product_router from "./routes/product-routes.js";
 
 // const cors = require("cors");
 // const fs = require("fs");
@@ -19,6 +20,7 @@ app.use(cors());
 app.use(express.json());
 app.use(users_router);
 app.use(user_role_router);
+app.use(product_router);
 app.use(product_category_router);
 
 app.get("/users", (request, response) => {
