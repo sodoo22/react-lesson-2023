@@ -5,7 +5,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const Todo = require("./models/Todo");
 const todoRouter = require("./routes/todo-routes");
-const categoryRouter = require("./routes/todo-routes");
+const categoryRouter = require("./routes/category-routes");
 
 const app = express();
 const PORT = 8080;

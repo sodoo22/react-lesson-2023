@@ -1,13 +1,7 @@
+###
 
 GET http://localhost:8080/todo/list HTTP/1.1
 Content-Type: application/json
-
-###
-
-DELETE  http://localhost:8080/delete HTTP/1.1
-Content-Type: application/json
-
-{"checked": false}
 
 ###
 
@@ -15,20 +9,26 @@ POST http://localhost:8080/todo/create HTTP/1.1
 Content-Type: application/json
 
     {
-    "name": "Washing Clothes",
+    "name": "Reading",
     "checked": false,
-    "category": "64192c4d8523559e23836fba"
+    "category": "6419645d03a916ef5bb2454e"
     }
-
 
 ###
 
-PUT http://localhost:8080/update HTTP/1.1
+DELETE  http://localhost:8080/todo/delete HTTP/1.1
+Content-Type: application/json
+
+{"checked": true}
+
+###
+
+PUT http://localhost:8080/todo/update HTTP/1.1
 Content-Type: application/json
 
 [
     {"checked": true},
-    {"name": "Washing Dishes"}
+    {"name": "Cleaning"}
 ]
     
 ###

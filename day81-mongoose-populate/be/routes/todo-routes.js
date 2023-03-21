@@ -36,7 +36,9 @@ todoRouter.put("/update", async (request, response) => {
 
 todoRouter.delete("/delete", async (request, response) => {
   const body = request.body;
+
   const result = await Todo.deleteMany(body);
+
   response.status(200).json({
     data: result,
   });
