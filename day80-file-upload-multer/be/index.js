@@ -3,6 +3,7 @@
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -28,8 +29,19 @@ app.get("/", (request, response) => {
 app.post("/fileUpload", upload.single("image"), (req, res, next) => {
   // res.send(req.file);
   console.log(req.file);
+
+  console.log("========================== TEST ========================");
+  const images = fs.readdirSync("./uploads");
+
+  const array = [];
+  const dataImage = images.forEach((el) => {
+    const fileUrl = `http://localhost:8080/uploads/${el}`;
+    array.push(fileUrl);
+  });
+  console.log(array);
+
   res.json({
-    data: [],
+    data: array,
   });
 });
 
