@@ -18,19 +18,33 @@ const app = express();
 const PORT = 8080;
 const upload = multer({ storage: storage });
 
-app.use("/uploads", express.static("uploads"));
 app.use(cors());
+app.use("/uploads", express.static("uploads"));
 app.use(express.json());
 
 app.get("/", (request, response) => {
   response.status(200).send(`<h1>DAY-80 File upload Multer</h1>`);
 });
 
+app.get("/uploads", (request, response) => {
+  const filesPath = [];
+
+  fs.readdirSync("./uploads").forEach((file) => {
+    console.log("========================== TEST ========================");
+    console.log(file);
+    const url = `http://localhost:8080/uploads/${el}`;
+    filesPath.push(url);
+  });
+
+  response.send({
+    data: filesPath,
+  });
+});
+
 app.post("/fileUpload", upload.single("image"), (req, res, next) => {
   // res.send(req.file);
   console.log(req.file);
 
-  console.log("========================== TEST ========================");
   const images = fs.readdirSync("./uploads");
 
   const array = [];

@@ -1,0 +1,43 @@
+###
+
+GET http://localhost:8080/admin/user HTTP/1.1
+Content-Type: application/json
+
+###
+
+POST http://localhost:8080/admin/register HTTP/1.1
+Content-Type: application/json
+
+    {
+    "email": "Sodoo333333@gmail.com",
+    "password" : "1234"
+    }
+
+###
+
+POST http://localhost:8080/admin/login HTTP/1.1
+Content-Type: application/json
+
+     {
+    "email": "Sodoo333333@gmail.com",
+    "password" : "1234"
+    }
+
+###
+
+DELETE  http://localhost:8080/category/delete HTTP/1.1
+Content-Type: application/json
+
+{"name": "Working"}
+
+###
+
+PUT http://localhost:8080/category/update HTTP/1.1
+Content-Type: application/json
+
+[
+    {"rename": "Hard Working"},
+    {"name": "Working"}
+]
+    
+###

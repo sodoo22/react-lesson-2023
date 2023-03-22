@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 
 export default function FileUpload() {
-  const [imagesUrl, setImageUrl] = useState([]);
-
   const URL = "http://localhost:8080/fileUpload";
   const FILE_URL = "http://localhost:8080/uploads";
+  const [imagesUrl, setImageUrl] = useState([]);
 
   async function fetchFiles() {
     const FETCHED_DATA = await fetch(FILE_URL);
     const FETCHED_JSON = await FETCHED_DATA.json();
+    console.log(FETCHED_JSON.data);
     setImageUrl(FETCHED_JSON.data);
   }
 
