@@ -13,8 +13,9 @@ const verifyToken = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verifyToken(token, "MySuperDuperPrivateKey");
-    req.foundUser = decoded;
+    const decoded = jwt.verify(token, "MySuperDuperPrivateKey");
+    console.log(decoded);
+    req.user = decoded;
     return res.status(200).json({
       message: "Хэрэглэгчийн токен zuv",
     });
@@ -24,7 +25,7 @@ const verifyToken = (req, res, next) => {
       message: "Хэрэглэгчийн токен буруу, эсвэл идэвхигүй байна.",
     });
   }
-  return next;
+  return next();
 };
 
 module.exports = verifyToken;
