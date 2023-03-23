@@ -48,13 +48,13 @@ adminApiRouter.post("/login", async (request, response) => {
         message: "Утгуудыг бүрэн оруулна уу",
       });
     }
-    const foundUser = await User.findOne({ email: email });
+    const user = await User.findOne({ email: email });
 
-    if (foundUser) {
-      const isMatch = await bcrypt.compare(password, foundUser?.password);
+    if (user) {
+      const isMatch = await bcrypt.compare(password, user?.password);
 
-      if (foundUser && isMatch) {
-        const jwtBody = { user_id: foundUser._id, email: email };
+      if (user && isMatch) {
+        const jwtBody = { user_id: user._id, email: email };
         const token = jwt.sign(jwtBody, "MySuperDuperPrivateKey", {
           expiresIn: "24",
         });
