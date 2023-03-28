@@ -27,18 +27,23 @@ export default function Map() {
       >
         {neighborhoods &&
           neighborhoods.map((pol) => {
-            const polygon = pol.geometry.coordinates;
+            const polygon = pol.geometry.coordinates[0];
 
-            const rePolygon = [];
-            polygon.map((coor) => {
-              rePolygon.push(coor[0].reverse());
+            const rePolygon = polygon.map((subArr) => {
+              const len = subArr.length;
+              const reversedSubArr = [];
+
+              for (let i = len - 1; i >= 0; i--) {
+                reversedSubArr.push([subArr[i][1], subArr[i][0]]);
+              }
+              return reversedSubArr;
             });
             console.log(rePolygon);
 
             return (
               <Polygon
                 pathOptions={purpleOptions}
-                positions={polygon}
+                positions={rePolygon}
                 // position={[point.address.coord[1], point.address.coord[0]]}
               />
             );
