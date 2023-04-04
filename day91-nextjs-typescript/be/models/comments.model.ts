@@ -6,6 +6,7 @@ interface IComment {
   email: string;
   movie_id: { type: mongoose.Schema.Types.ObjectId };
   text: string;
+  date: { type: mongoose.Schema.Types.Date };
 }
 
 const CommentSchema: Schema = new Schema({});
