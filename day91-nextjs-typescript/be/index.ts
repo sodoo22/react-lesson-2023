@@ -4,6 +4,7 @@ import express, { Express, Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
+import MoviesRouter from "./routes/movies.api";
 dotenv.config();
 
 const app: Express = express();
@@ -22,6 +23,7 @@ app.get("/", (req: Request, res: Response) => {
 
 app.use("/theaters", TheaterRouter);
 app.use("/comments", CommentRouter);
+app.use("/movies", MoviesRouter);
 
 app.listen(PORT, () => {
   mongoose
