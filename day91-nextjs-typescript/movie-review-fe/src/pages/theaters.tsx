@@ -53,7 +53,7 @@ useEffect(()=>{
     return(
    <div>
          <h1>THEATER LIST</h1>
-         {data.map((el, index)=><li key={index}>{el.theaterId}</li>
+         {data.map((el, index)=><li key={index}>{el.location.address.city}</li>
          )}
    </div>
     

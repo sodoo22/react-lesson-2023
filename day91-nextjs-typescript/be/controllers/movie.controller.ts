@@ -18,7 +18,7 @@ export const getMovies = async (req: Request, res: Response) => {
 export const getMovieById = async (req: Request, res: Response) => {
   try {
     const movies = await MovieModel.find({
-      movieId: Number(req.params.id),
+      _id: Number(req.params.id),
     });
     res.status(200).json(movies);
   } catch (error) {

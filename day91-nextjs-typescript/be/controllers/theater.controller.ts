@@ -3,12 +3,12 @@ import { Request, Response } from "express";
 
 export const getTheaters = async (req: Request, res: Response) => {
   const page: number = Number(req.query.page) || 0;
-  const moviesPerPage: number = Number(req.query.moviesPerPage);
+  const perPage: number = Number(req.query.perPage);
 
   try {
     const theaters = await TheaterModel.find()
-      .limit(moviesPerPage)
-      .skip(moviesPerPage * page);
+      .limit(perPage)
+      .skip(perPage * page);
     res.status(200).json(theaters);
   } catch (error) {
     res.status(404).json({ data: [] });
