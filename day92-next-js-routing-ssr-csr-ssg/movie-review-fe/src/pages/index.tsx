@@ -1,25 +1,27 @@
 import Link from "next/link";
-import React from "react"
+import React from "react";
 import Navbar from "./navbar";
 import styles from "@/styles/Home.module.css";
 import MoviesData from "./movies";
 
 export async function getServerSideProps() {
-  const userRequest = await fetch('http://localhost:8080/theaters/list?page=2&perPage=1')
-  const theaterData = await userRequest.json()
-  console.log( theaterData );
-  return{
-    props:{
-      theater: theaterData
-    }
-  }
+  const userRequest = await fetch(
+    "http://localhost:8080/theaters/list?page=2&perPage=1"
+  );
+  const theaterData = await userRequest.json();
+  console.log(theaterData);
+  return {
+    props: {
+      theater: theaterData,
+    },
+  };
 }
 
-export default function Home(props: any): JSX.Element  {
-  console.log( props );
+export default function Home(props: any): JSX.Element {
+  console.log(props);
 
-  const side = typeof window ? 'client' : 'server'
-  return(
+  const side = typeof window ? "client" : "server";
+  return (
     // <div>
     //   <div>Welcome! </div>
     //   <div>You're on currently on the {side}-side</div><br />
@@ -33,8 +35,8 @@ export default function Home(props: any): JSX.Element  {
     //   }}>Post Page</Link>
     // </div>
     <div className={styles.main}>
-      <Navbar/>
-      <MoviesData/>
+      <Navbar />
+      <MoviesData />
     </div>
-  )
+  );
 }

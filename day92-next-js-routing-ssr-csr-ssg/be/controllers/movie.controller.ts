@@ -3,12 +3,13 @@ import { Request, Response } from "express";
 
 export const getMovies = async (req: Request, res: Response) => {
   const page: number = Number(req.query.page) || 0;
-  const perPage: number = Number(req.query.perPage) || 5;
+  const perPage: number = Number(req.query.perPage);
 
   try {
     const movies = await MovieModel.find()
       .limit(perPage)
-      .skip(perPage * page);
+      .skip(perPage * page)
+      .sort({ year: -1 });
     res.status(200).json(movies);
   } catch (error) {
     res.status(404).json({ data: [] });

@@ -115,7 +115,9 @@ function MoviesData(): JSX.Element {
   }, []);
 
   const fetchMovies = async (): Promise<void> => {
-    const FETCHED_DATA = await fetch("http://localhost:8080/movies/list");
+    const FETCHED_DATA = await fetch(
+      "http://localhost:8080/movies/list?page=2&perPage=30"
+    );
     const FETCHED_JSON = await FETCHED_DATA.json();
     setMovies(FETCHED_JSON);
     console.log(FETCHED_JSON);
@@ -123,13 +125,17 @@ function MoviesData(): JSX.Element {
 
   return (
     <>
-      <div className={movieStyles.newUpcoming}>
-        {/* <h2> movies </h2> */}
+      <div className="bg-white text-tahiti gap-5 grid sm:grid-cols-2  lg:grid-cols-6 justify-between container p-3">
         {movies.map((movie, index) => {
+          console.log(movie.poster === undefined);
           return (
             <div key={index}>
-              <img className={movieStyles.PosterImg} src={movie.poster} />{" "}
-              <p className={movieStyles.PosterPlot}>{movie.plot}</p>
+              <img
+                className="object-cover hover:object-none sm:h-100 sm:w-50 lg:h-60 lg:w-48 rounded-md"
+                src={!movie.poster ? "/sample.jpg" : movie.poster}
+              />
+              {/* <img className={movieStyles.PosterImg} src={movie.poster} /> */}
+              <p className={movieStyles.PosterPlot}>{movie.title}</p>
             </div>
           );
         })}
