@@ -1,0 +1,75 @@
+.navbar {
+  width: 1100px;
+  height: 130px;
+  background-color: #fa320a;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.navbar img {
+  width: 160px;
+  height: 50px;
+}
+
+.input {
+  color: white;
+  border: 1px solid white;
+  width: 380px;
+  height: 35px;
+  border-radius: 30px;
+  padding: 9px;
+  background-color: rgb(176, 29, 29);
+}
+
+.input::placeholder {
+  padding-left: 30px;
+  color: white;
+}
+
+.rightTop {
+  display: flex;
+  color: white;
+  gap: 30px;
+}
+.rightBottom {
+  display: flex;
+  color: white;
+  gap: 30px;
+}
+.leftNavbar {
+  display: flex;
+  align-items: center;
+}
+
+.navbar button {
+  color: white;
+  background-color: red;
+  border: none;
+  cursor: pointer;
+}
+
+.PosterImg {
+  width: 180px;
+  height: 260px;
+  display: flex;
+  /* flex-direction: row; */
+}
+
+.PosterPlot {
+  width: 180px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.newUpcoming {
+  display: flex;
+  gap: 30px;
+}
+
+.NavBottom {
+  display: flex;
+  width: 1100px;
+  height: 30px;
+  border: 1px solid;
+}
