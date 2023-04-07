@@ -4,6 +4,7 @@ import movieStyles from "@/styles/Movie.module.css";
 import { Roboto } from "next/font/google";
 
 function Navbar() {
+  console.log("test");
   return (
     <div className="">
       <div className={movieStyles.navbar}>
