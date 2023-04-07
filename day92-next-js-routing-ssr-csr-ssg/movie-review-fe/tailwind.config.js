@@ -7,6 +7,9 @@ module.exports = {
         ulaan: "#fa320a",
       },
     },
+    fontFamily: {
+      bebas: "Bebas Neue, cursive",
+    },
   },
   plugins: [],
 };

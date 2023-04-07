@@ -1,12 +1,11 @@
 import React from "react";
 import styles from "@/styles/Home.module.css";
 import movieStyles from "@/styles/Movie.module.css";
-import { Roboto } from 'next/font/google'
-
+import { Roboto } from "next/font/google";
 
 function Navbar() {
   return (
-    <div>
+    <div className="">
       <div className={movieStyles.navbar}>
         <div className={movieStyles.leftNavbar}>
           <img
@@ -18,11 +17,11 @@ function Navbar() {
             placeholder="Search movies, TV, actors, more..."
           />
         </div>
-        <div className={movieStyles.rigthNav}>
+        <div className="font-bebas">
           <div className={movieStyles.rightTop}>
             <button>What's the Tomatometer®?</button>
             <button>Critics</button>
-            <button>Login SignUp</button>
+            <a href="/login">LOGIN/SIGNUP</a>
           </div>
           <div className={movieStyles.rightBottom}>
             <button>MOVIES</button>
