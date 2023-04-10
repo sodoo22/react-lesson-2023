@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import styles from "@/styles/Home.module.css";
 import movieStyles from "@/styles/Movie.module.css";
+import Pagination from "@mui/material/Pagination";
+import Stack from "@mui/material/Stack";
 
 // interface IMovies {
 //   plot: string;
@@ -143,6 +145,16 @@ function MoviesData(): JSX.Element {
           <p key={index}> {e.cast} </p>
         ))} */}
       </div>
+      <Stack spacing={2}>
+        <Pagination
+          count={10}
+          size="large"
+          variant="outlined"
+          color="primary"
+        />
+      </Stack>
+      <br />
+      <br />
     </>
   );
 }
