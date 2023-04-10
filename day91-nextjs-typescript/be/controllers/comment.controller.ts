@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import CommentModel from "../models/comments.model";
 
 export const getCommets = async (req: Request, res: Response) => {
+  console.log("test");
   const page: number = Number(req.query.page) || 0;
   const perPage: number = Number(req.query.perPage);
 
@@ -24,7 +25,7 @@ export const getCommentById = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(404).json({ data: [] });
   }
-}
+};
 
 export const searchComments = async (req: Request, res: Response) => {
   console.log(req.query.keyword);
@@ -41,4 +42,4 @@ export const searchComments = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(404).json({ data: [] });
   }
-}
+};
