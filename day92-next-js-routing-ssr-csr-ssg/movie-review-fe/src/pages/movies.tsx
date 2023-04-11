@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css";
 import movieStyles from "@/styles/Movie.module.css";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import Link from "next/link";
 
 // interface IMovies {
 //   plot: string;
@@ -117,17 +118,24 @@ function MoviesData(): JSX.Element {
   }, []);
 
   const fetchMovies = async (): Promise<void> => {
-    const FETCHED_DATA = await fetch(
-      "http://localhost:8080/movies/list?page=2&perPage=30"
-    );
+    const FETCHED_DATA = await fetch("http://localhost:8080/movies/list");
     const FETCHED_JSON = await FETCHED_DATA.json();
     setMovies(FETCHED_JSON);
     console.log(FETCHED_JSON);
   };
 
+  const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    console.log(value);
+    fetch(`http://localhost:8080/movies/list?page=${value}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data);
+      });
+  };
+
   return (
     <>
-      <div className="bg-white text-tahiti gap-5 grid sm:grid-cols-2  lg:grid-cols-6 justify-between container p-3">
+      <div className="bg-white text-black gap-5 grid sm:grid-cols-2  lg:grid-cols-6 justify-between container p-3">
         {movies.map((movie, index) => {
           console.log(movie.poster === undefined);
           return (
@@ -136,8 +144,10 @@ function MoviesData(): JSX.Element {
                 className="object-cover hover:object-none sm:h-100 sm:w-50 lg:h-60 lg:w-48 rounded-md"
                 src={!movie.poster ? "/sample.jpg" : movie.poster}
               />
-              {/* <img className={movieStyles.PosterImg} src={movie.poster} /> */}
-              <p className={movieStyles.PosterPlot}>{movie.title}</p>
+
+              <Link href={{ pathname: "/movies/id", query: movie._id }}>
+                <h5>{movie.title}</h5>
+              </Link>
             </div>
           );
         })}
@@ -151,6 +161,7 @@ function MoviesData(): JSX.Element {
           size="large"
           variant="outlined"
           color="primary"
+          onChange={handleChange}
         />
       </Stack>
       <br />
