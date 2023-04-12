@@ -18,13 +18,13 @@ export const getCommets = async (req: Request, res: Response) => {
 export const getCommentById = async (req: Request, res: Response) => {
   try {
     const comments = await CommentModel.find({
-      commentId: Number(req.params.id),
+      _id: req.params.id,
     });
     res.status(200).json(comments);
   } catch (error) {
     res.status(404).json({ data: [] });
   }
-}
+};
 
 export const searchComments = async (req: Request, res: Response) => {
   console.log(req.query.keyword);
@@ -41,4 +41,4 @@ export const searchComments = async (req: Request, res: Response) => {
   } catch (error) {
     res.status(404).json({ data: [] });
   }
-}
+};

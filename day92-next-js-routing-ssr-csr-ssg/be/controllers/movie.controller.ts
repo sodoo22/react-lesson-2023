@@ -17,9 +17,10 @@ export const getMovies = async (req: Request, res: Response) => {
 };
 
 export const getMovieById = async (req: Request, res: Response) => {
+  console.log(req.params.id);
   try {
     const movies = await MovieModel.find({
-      _id: Number(req.params.id),
+      _id: req.params.id,
     });
     res.status(200).json(movies);
   } catch (error) {
