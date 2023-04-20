@@ -30,7 +30,10 @@ export class TodosService {
   }
 
   async update(id: string, updateTodoDto: UpdateTodoDto) {
-    const result = await this.todoModel.updateOne({ _id: id }, updateTodoDto);
+    const result = await this.todoModel.findOneAndUpdate(
+      { _id: id },
+      updateTodoDto,
+    );
     return result;
   }
 
