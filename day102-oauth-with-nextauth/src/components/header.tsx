@@ -26,8 +26,14 @@ export default function Header() {
         >
           {!session && (
             <div>
-              <span>You are not signed in </span>
-              <a href={`/api/auth/signin`} onClick={handleLogin}>
+              <span className={styles.notSignedInText}>
+                You are not signed in{" "}
+              </span>
+              <a
+                href={`/api/auth/signin`}
+                className={styles.buttonPrimary}
+                onClick={handleLogin}
+              >
                 Sign In
               </a>
             </div>
