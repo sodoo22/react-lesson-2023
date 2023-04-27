@@ -40,7 +40,7 @@ const jwt = require("jsonwebtoken");
 // register endpoint
 adminApiRouter.post("/register", async (req, res) => {
   const data = req.body;
-  console.log(req.body);
+  console.log("TEST========================", req.body);
   if (data) {
     const oldUser = await Users.findOne({ email: data.email });
     if (oldUser) {
@@ -100,7 +100,7 @@ adminApiRouter.post("/login", async (request, response) => {
         message: "Утгуудыг бүрэн оруулна уу",
       });
     }
-    const user = await User.findOne({ email: email });
+    const user = await Users.findOne({ email: email });
 
     if (user) {
       const isMatch = await bcrypt.compare(password, user?.password);

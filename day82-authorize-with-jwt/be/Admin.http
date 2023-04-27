@@ -19,8 +19,8 @@ POST http://localhost:8080/admin/login HTTP/1.1
 Content-Type: application/json
 
      {
-    "email": "Sodoo333333@gmail.com",
-    "password" : "1234"
+    "email": "sodoo775@gmail.com",
+    "password" : "123"
     }
 
 ###
